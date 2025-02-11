@@ -1,14 +1,14 @@
-import express from "express"
+import express from "express";
 
-export const server = express()
+export const server = express();
 
 // Comprobando que funciona
-const router = express.Router()
-router.get("/", () => console.log("Hello world"))
+const router = express.Router();
+router.get("/", () => console.log("Hello world"));
 
 /* MIDDLEWARES */
 
 /* ROUTER */
-server.use(router)
+server.use(router);
 
 /* ERRORS */

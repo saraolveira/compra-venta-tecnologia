@@ -1,4 +1,4 @@
-import "dotenv/config"
+import "dotenv/config";
 
 export const {
     MYSQL_HOST,
@@ -12,4 +12,4 @@ export const {
     // SMTP_API_KEY,
     // UPLOADS_DIR,
     // FRONTEND_HOST,
-} = process.env
+} = process.env;

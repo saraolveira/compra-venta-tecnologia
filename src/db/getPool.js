@@ -1,13 +1,13 @@
-import mysql from "mysql2/promise"
+import mysql from "mysql2/promise";
 import {
     MYSQL_HOST,
     MYSQL_USER,
     MYSQL_PASSWORD,
     MYSQL_DATABASE,
     MYSQL_PORT,
-} from "../../env.js"
+} from "../../env.js";
 
-let pool = null
+let pool = null;
 
 export const getPool = async () => {
     try {
@@ -18,12 +18,12 @@ export const getPool = async () => {
                 user: MYSQL_USER,
                 password: MYSQL_PASSWORD,
                 port: MYSQL_PORT || 3306,
-            })
+            });
 
             // Crear la DDBB si no existe
             await poolTemp.query(
                 `CREATE DATABASE IF NOT EXISTS ${MYSQL_DATABASE}`
-            )
+            );
 
             // Crear la conexión con la DDBB
             pool = mysql.createPool({
@@ -34,11 +34,11 @@ export const getPool = async () => {
                 port: MYSQL_PORT || 3306,
                 connectionLimit: 10,
                 timezone: "Z",
-            })
+            });
         }
 
-        return pool
+        return pool;
     } catch (error) {
-        console.error("Error al obtener el pool de conexiones")
+        console.error("Error al obtener el pool de conexiones");
     }
-}
+};
