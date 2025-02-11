@@ -10,6 +10,6 @@ export const {
     // SECRET,
     // SMTP_USER,
     // SMTP_API_KEY,
-    // UPLOADS_DIR,
+    UPLOADS_DIR,
     // FRONTEND_HOST,
 } = process.env;
