@@ -12,4 +12,7 @@ export const {
     // SMTP_API_KEY,
     UPLOADS_DIR,
     // FRONTEND_HOST,
+    ADMIN_USERNAME,
+    ADMIN_PASSWORD,
+    ADMIN_EMAIL,
 } = process.env;
