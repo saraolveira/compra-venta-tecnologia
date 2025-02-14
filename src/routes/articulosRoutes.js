@@ -6,4 +6,4 @@ import { getArticuloByIdController } from "../controllers/articulos/getArticuloB
 export const articulosRoutes = express.Router();
 
 articulosRoutes.get("/articulos", getAllArticulosController);
-articulosRoutes.get("articulos/:id", getArticuloByIdController);
+articulosRoutes.get("/articulos/:id", getArticuloByIdController);

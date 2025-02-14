@@ -1,8 +1,12 @@
+import { getArticuloByIdService } from "../../services/articulos/getArticuloByIdService.js";
+
 export const getArticuloByIdController = async (req, res, next) => {
     try {
-        const articulo = req.articulo;
+        const { id } = req.params;
 
-        res.stattus(200).send({
+        const articulo = await getArticuloByIdService(id);
+
+        res.status(200).send({
             status: "success",
             message: "Articulo encontrado",
             data: { articulo },

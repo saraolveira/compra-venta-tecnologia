@@ -1,4 +1,5 @@
-import { selectPhotosbyArticuloIdModel } from "../../models/photos/selectPhotosByArticuloIdModel.js";
+import { selectArticuloByIdModel } from "../../models/articulos/selectArticuloByIdModel.js";
+import { selectPhotosByArticuloIdModel } from "../../models/photos/selectPhotosByArticuloIdModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
 export const getArticuloByIdService = async (id) => {
@@ -12,7 +13,7 @@ export const getArticuloByIdService = async (id) => {
         );
     }
 
-    const fotos = await selectPhotosbyArticuloIdModel(articulo.id);
+    const fotos = await selectPhotosByArticuloIdModel(articulo.id);
     articulo.fotos = fotos;
     return articulo;
 };
