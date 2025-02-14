@@ -9,6 +9,6 @@ export const selectAllusersModel = async () => {
         "SELECT id, username, nombre, apellidos, email, avatar, rol, createdAt, updatedAt FROM usuarios"
     );
 
-    // 3. Devolver los usuarios
+    // Devolver los usuarios
     return usuarios;
 };

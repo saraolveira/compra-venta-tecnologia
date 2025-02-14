@@ -3,15 +3,13 @@ import fileupload from "express-fileupload";
 import cors from "cors";
 import path from "path";
 
-import { UPLOADS_DIR } from "../env.js";
 import { router } from "./routes/indexRouter.js";
-// meto el indexRouter
+
+import { UPLOADS_DIR } from "../env.js";
+
 
 export const server = express();
 
-// Comprobando que funciona
-// const router = express.Router();
-router.get("/", () => console.log("Hello world"));
 
 /* MIDDLEWARES */
 
