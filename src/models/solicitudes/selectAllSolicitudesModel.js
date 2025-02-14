@@ -1,9 +1,11 @@
 import { getPool } from "../../db/getPool.js";
 
 export const selectAllSolicitudesModel = async () => {
-  const pool = await getPool();
+    const pool = await getPool();
 
-  const [solicitudes] = await pool.query();
+    const [solicitudesCompra] = await pool.query(
+        `SELECT * FROM solicitudesCompra LIMIT 10`
+    );
 
-  return solicitudes;
+    return solicitudesCompra;
 };

@@ -1,9 +1,9 @@
 import { getPool } from "../../db/getPool.js";
 
 export const selectAllUsersModel = async () => {
-  const pool = await getPool();
+    const pool = await getPool();
 
-  const [users] = await pool.query();
+    const [usuarios] = await pool.query(`SELECT * FROM usuarios`);
 
-  return users;
+    return usuarios;
 };
