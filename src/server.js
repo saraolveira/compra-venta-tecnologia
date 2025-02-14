@@ -7,9 +7,7 @@ import { router } from "./routes/indexRouter.js";
 
 import { UPLOADS_DIR } from "../env.js";
 
-
 export const server = express();
-
 
 /* MIDDLEWARES */
 

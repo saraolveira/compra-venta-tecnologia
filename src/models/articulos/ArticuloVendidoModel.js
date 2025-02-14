@@ -1,14 +1,13 @@
-import { getPool } from "../../db/getPool.js";
+/* import { getPool } from "../../db/getPool.js";
 
 export const ArticuloVendidoModel = async (id) => {
-    try {
-        const pool = await getPool();
+    const pool = await getPool();
 
-        const vendido = await pool.query(
-            `UPDATE articulos SET vendido = 1 WHERE id = ?`,
-            [id]
-        );
+    const [vendido] = (vendido = await pool.query(
+        `UPDATE articulos SET vendido = 1 WHERE id = ?`,
+        [articulo.id]
+    ));
 
-        return vendido;
-    } catch (error) {}
+    return vendido;
 };
+ */
