@@ -6,6 +6,8 @@ import crypto from "crypto";
 import { selectUsernameModel } from "../../models/users/selectUsernameModel.js";
 import { selectEmailModel } from "../../models/users/selectEmailModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
+import { insertUserModel } from "../../models/users/insertUsernameModel.js";
+import { sendEmailBrevoUtil } from "../../utils/sendEmailBrevoUtils.js";
 
 // función que se encarga de registrar un usuario en la base de datos
 export const registerUserService = async (username, email, password) => {
@@ -13,7 +15,7 @@ export const registerUserService = async (username, email, password) => {
     const checkUser = async (username, email) => {
         if (await selectUsernameModel(username)) {
             throw generateErrorUtils(
-                400,
+                404,
                 "USERNAME_REGISTERED",
                 "El nombre de usuario ya está en uso. Prueba con otro o inicia sesión."
             );
@@ -21,7 +23,7 @@ export const registerUserService = async (username, email, password) => {
 
         if (await selectEmailModel(email)) {
             throw generateErrorUtils(
-                400,
+                404,
                 "EMAIL_REGISTERED",
                 "El email ya está en uso. Prueba con otro o inicia sesión."
             );
@@ -34,7 +36,7 @@ export const registerUserService = async (username, email, password) => {
     const id = crypto.randomUUID();
 
     // generar cógio de registro
-    const registerCode = randomstring.generate(10);
+    const registrationCode = randomstring.generate(10);
 
     // hashear contraseña
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -45,7 +47,7 @@ export const registerUserService = async (username, email, password) => {
         username,
         email,
         password: hashedPassword,
-        registerCode,
+        registrationCode,
     };
 
     const result = await insertUserModel(newUser);
@@ -66,7 +68,7 @@ export const registerUserService = async (username, email, password) => {
     <h2>¡Bienvenid@ a Tech2Go, ${username}!.</h2>
     <p>Ya casi eres parte de nuestra comunidad, la plataforma donde la tecnología y la innovación se encuentran.</p>
     <p>Para empezar a vender o comprar los mejores productos tecnológicos, activa tu cuenta haciendo clic en el siguiente enlace:</p>
-    <p><a href="http://localhost:5173/validate/${registerCode}">Activa tu cuenta</a></p>
+    <p><a href="http://localhost:5173/validate/${registrationCode}">Activa tu cuenta</a></p>
     <p>¡No esperes más!</p>
     <p>El equipo de Tech2Go</p>
     `;
@@ -74,5 +76,5 @@ export const registerUserService = async (username, email, password) => {
     await sendEmailBrevoUtil(email, emailSubject, emailText);
 
     // Devolver el usuario creado
-    return { id, username, email, registerCode };
+    return { id, username, email, registrationCode };
 };

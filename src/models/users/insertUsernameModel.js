@@ -5,12 +5,12 @@ import { getPool } from "../../db/getPool.js";
 export const insertUserModel = async (user) => {
     const pool = await getPool();
 
-    const { id, username, email, password, registerCode } = user;
+    const { id, username, email, password, registrationCode } = user;
 
     // El primer elemento (result) contiene información sobre la consulta (como cuántas filas fueron afectadas).
     const [result] = await pool.query(
-        `INSERT INTO usuarios (id, username, email, password, registerCode) VALUES (?, ?, ?, ?, ?);`,
-        [id, username, email, password, registerCode]
+        `INSERT INTO usuarios (id, username, email, password, registrationCode) VALUES (?, ?, ?, ?, ?);`,
+        [id, username, email, password, registrationCode]
     );
 
     return result;

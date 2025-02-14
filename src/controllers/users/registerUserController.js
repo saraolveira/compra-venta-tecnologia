@@ -1,7 +1,7 @@
 // Recibe la petición del usuario, valida los datos y llama al servicio.
 
+import { registerUserSchema } from "../../schemas/users/registerUserSchema.js";
 import { registerUserService } from "../../services/users/registerUserService.js";
-import { registerUserSchema } from "../../shemas/registerUserSchema.js";
 import { validateSchemaUtil } from "../../utils/validateSchemaUtils.js";
 
 export const registerUserController = async (req, res, next) => {
