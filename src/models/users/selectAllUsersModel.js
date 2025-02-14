@@ -1,9 +1,14 @@
 import { getPool } from "../../db/getPool.js";
 
-export const selectAllUsersModel = async () => {
+export const selectAllusersModel = async () => {
+    // Conexión con la base de datos
     const pool = await getPool();
 
-    const [usuarios] = await pool.query(`SELECT * FROM usuarios`);
+    // Consulta para obtener todos los usuarios
+    const [usuarios] = await pool.query(
+        "SELECT id, username, nombre, apellidos, email, avatar, rol, createdAt, updatedAt FROM usuarios"
+    );
 
+    // Devolver los usuarios
     return usuarios;
 };

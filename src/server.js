@@ -7,9 +7,9 @@ import { router } from "./routes/indexRouter.js";
 
 import { UPLOADS_DIR } from "../env.js";
 
+
 export const server = express();
 
-// Comprobando que funciona
 
 /* MIDDLEWARES */
 
@@ -27,7 +27,7 @@ server.use("/uploads", express.static(uploadsDir));
 server.use(cors());
 
 /* ROUTER */
-server.use(router);
+server.use(router); // meto el indexRouter
 
 /* ERRORS */
 

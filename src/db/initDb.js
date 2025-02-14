@@ -145,7 +145,7 @@ export const initDb = async () => {
 
         process.exit(0);
     } catch (error) {
-        console.error("Error al inicializar la base de datos");
+        console.error("Error al inicializar la base de datos", error);
         process.exit(1);
     }
 };
