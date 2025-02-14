@@ -61,6 +61,7 @@ export const initDb = async () => {
                 precio DECIMAL(7, 2) NOT NULL,
                 descripcion TEXT NOT NULL,
                 visibilidad BOOLEAN DEFAULT FALSE,
+                vendido BOOLEAN DEFAULT FALSE,
                 vendedorId CHAR(36) NOT NULL,
                 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updatedAt TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
