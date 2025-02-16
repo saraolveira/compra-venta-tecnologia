@@ -24,7 +24,7 @@ export const initDb = async () => {
         // Borrar las tablas si existen
         console.log("Borrando tablas existentes 🗑 📑");
         await pool.query(
-            "DROP TABLE IF EXISTS valoraciones, ventas, solicitudesCompra, fotos, articulos, usuarios"
+            "DROP TABLE IF EXISTS valoraciones, solicitudesCompra, fotos, articulos, usuarios"
         );
         console.log("Tablas borradas ✅ 📑");
 
@@ -119,8 +119,8 @@ export const initDb = async () => {
         const password = await bcrypt.hash(ADMIN_PASSWORD, 10);
 
         await pool.query(
-            `INSERT INTO usuarios (id, username, email, password, rol) VALUES (?, ?, ?, ?, ?);`,
-            [id, ADMIN_USERNAME, ADMIN_EMAIL, password, "admin"]
+            `INSERT INTO usuarios (id, username, email, password, activado, rol) VALUES (?, ?, ?, ?, ?, ?);`,
+            [id, ADMIN_USERNAME, ADMIN_EMAIL, password, true, "admin"]
         );
 
         console.log("Usuario administrador creado");
