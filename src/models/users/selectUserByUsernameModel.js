@@ -1,6 +1,6 @@
 import { getPool } from "../../db/getPool.js";
 
-export const selectUsernameModel = async (username) => {
+export const selectUserByUsernameModel = async (username) => {
     // Conectar con la base de datos
     const pool = await getPool();
 

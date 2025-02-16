@@ -119,8 +119,8 @@ export const initDb = async () => {
         const password = await bcrypt.hash(ADMIN_PASSWORD, 10);
 
         await pool.query(
-            `INSERT INTO usuarios (id, username, email, password, rol) VALUES (?, ?, ?, ?, ?);`,
-            [id, ADMIN_USERNAME, ADMIN_EMAIL, password, "admin"]
+            `INSERT INTO usuarios (id, username, email, password, activado, rol) VALUES (?, ?, ?, ?, ?, ?);`,
+            [id, ADMIN_USERNAME, ADMIN_EMAIL, password, true, "admin"]
         );
 
         console.log("Usuario administrador creado");
