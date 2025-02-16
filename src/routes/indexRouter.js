@@ -1,10 +1,10 @@
 import express from "express";
 
-import { articulosRoutes } from "./articulosRoutes.js";
-import { usuariosRouter } from "./usuariosRoutes.js";
-import { solicitudesRouter } from "./solicitudesRoutes.js";
+import { articulosRouter } from "./articulosRouter.js";
+import { usuariosRouter } from "./usuariosRouter.js";
+import { solicitudesRouter } from "./solicitudesRouter.js";
 export const router = express.Router();
 
-router.use(articulosRoutes);
+router.use(articulosRouter);
 router.use(usuariosRouter);
 router.use(solicitudesRouter);

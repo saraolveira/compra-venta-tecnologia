@@ -3,8 +3,8 @@
 import randomstring from "randomstring";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
-import { selectUsernameModel } from "../../models/users/selectUsernameModel.js";
-import { selectEmailModel } from "../../models/users/selectEmailModel.js";
+import { selectUserByUsernameModel } from "../../models/users/selectUserByUsernameModel.js";
+import { selectUserByEmailModel } from "../../models/users/selectUserByEmailModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 import { insertUserModel } from "../../models/users/insertUsernameModel.js";
 import { sendEmailBrevoUtil } from "../../utils/sendEmailBrevoUtils.js";
@@ -13,7 +13,7 @@ import { sendEmailBrevoUtil } from "../../utils/sendEmailBrevoUtils.js";
 export const registerUserService = async (username, email, password) => {
     // buscar si el usuario o email ya existe
     const checkUser = async (username, email) => {
-        if (await selectUsernameModel(username)) {
+        if (await selectUserByUsernameModel(username)) {
             throw generateErrorUtils(
                 404,
                 "USERNAME_REGISTERED",
@@ -21,7 +21,7 @@ export const registerUserService = async (username, email, password) => {
             );
         }
 
-        if (await selectEmailModel(email)) {
+        if (await selectUserByEmailModel(email)) {
             throw generateErrorUtils(
                 404,
                 "EMAIL_REGISTERED",
@@ -65,10 +65,10 @@ export const registerUserService = async (username, email, password) => {
     const emailSubject = "Activación de cuenta";
     // Cuerpo del email
     const emailText = `
-    <h2>¡Bienvenid@ a Tech2Go, ${username}!.</h2>
+    <h2>¡Bienvenid@ a Tech2Go, ${username}!</h2>
     <p>Ya casi eres parte de nuestra comunidad, la plataforma donde la tecnología y la innovación se encuentran.</p>
     <p>Para empezar a vender o comprar los mejores productos tecnológicos, activa tu cuenta haciendo clic en el siguiente enlace:</p>
-    <p><a href="http://localhost:5173/validate/${registrationCode}">Activa tu cuenta</a></p>
+    <p><a href="http://localhost:5173/usuarios/active/${registrationCode}">Activa tu cuenta</a></p>
     <p>¡No esperes más!</p>
     <p>El equipo de Tech2Go</p>
     `;
