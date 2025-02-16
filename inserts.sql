@@ -1,5 +1,53 @@
 -- Active: 1733161011832@@127.0.0.1@3306@compraventa
 
+-- INSERTS PARA LA TABLA usuarios (10 filas)
+INSERT INTO usuarios (id, username, nombre, apellidos, email, password, telefono, avatar, biografia, activado, rol) VALUES
+('11111111-1111-1111-1111-111111111111', 'beyonce', 'Beyoncé', 'Knowles', 'beyonce@example.com', 'passwordhash', '600000001', 'beyonce.png', 'Queen of Pop and technology.', TRUE, 'user'),
+('22222222-2222-2222-2222-222222222222', 'elonmusk', 'Elon', 'Musk', 'elon@example.com', 'passwordhash', '600000002', 'elon.png', 'Innovator and entrepreneur.', TRUE, 'user'),
+('33333333-3333-3333-3333-333333333333', 'chucknorris', 'Chuck', 'Norris', 'chuck@example.com', 'passwordhash', '600000003', 'chuck.png', 'Tough and legendary.', TRUE, 'user'),
+('44444444-4444-4444-4444-444444444444', 'batman', 'Bruce', 'Wayne', 'batman@example.com', 'passwordhash', '600000004', 'batman.png', 'Dark knight of tech.', TRUE, 'user'),
+('55555555-5555-5555-5555-555555555555', 'sheldon', 'Sheldon', 'Cooper', 'sheldon@example.com', 'passwordhash', '600000005', 'sheldon.png', 'Smart but quirky scientist.', TRUE, 'user'),
+('66666666-6666-6666-6666-666666666666', 'kris', 'Kris', 'Jenner', 'kris@example.com', 'passwordhash', '600000006', 'kris.png', 'Famous for style and flair.', TRUE, 'user'),
+('77777777-7777-7777-7777-777777777777', 'rihanna', 'Rihanna', 'Fenty', 'rihanna@example.com', 'passwordhash', '600000007', 'rihanna.png', 'Queen of innovation and music.', TRUE, 'user'),
+('88888888-8888-8888-8888-888888888888', 'snoopdogg', 'Snoop', 'Dogg', 'snoop@example.com', 'passwordhash', '600000008', 'snoop.png', 'Chill and tech savvy.', TRUE, 'user'),
+('99999999-9999-9999-9999-999999999999', 'oprah', 'Oprah', 'Winfrey', 'oprah@example.com', 'passwordhash', '600000009', 'oprah.png', 'Inspiring and powerful.', TRUE, 'user'),
+('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'therock', 'Dwayne', 'Johnson', 'therock@example.com', 'passwordhash', '600000010', 'therock.png', 'Strong and charismatic.', TRUE, 'user');
+
+-- INSERTS PARA LA TABLA articulos (10 filas)
+INSERT INTO articulos (id, nombre, categoria, localidad, precio, descripcion, visibilidad, vendido, vendedorId) VALUES
+('b0000000-0000-0000-0000-000000000001', 'iPhone 13', 'telefono', 'Madrid', 999.99, 'Latest iPhone 13 with advanced features.', TRUE, FALSE, '22222222-2222-2222-2222-222222222222'),
+('b0000000-0000-0000-0000-000000000002', 'Samsung Galaxy S22', 'telefono', 'Barcelona', 899.99, 'Samsung flagship with great camera.', TRUE, FALSE, '33333333-3333-3333-3333-333333333333'),
+('b0000000-0000-0000-0000-000000000003', 'MacBook Pro 16', 'ordenador', 'Valencia', 2399.99, 'High-performance MacBook Pro for professionals.', TRUE, FALSE, '44444444-4444-4444-4444-444444444444'),
+('b0000000-0000-0000-0000-000000000004', 'Dell XPS 15', 'ordenador', 'Sevilla', 1399.99, 'Powerful and sleek Dell laptop.', TRUE, FALSE, '55555555-5555-5555-5555-555555555555'),
+('b0000000-0000-0000-0000-000000000005', 'PlayStation 5', 'consola', 'Bilbao', 499.99, 'Next-gen console with stunning graphics.', TRUE, FALSE, '66666666-6666-6666-6666-666666666666'),
+('b0000000-0000-0000-0000-000000000006', 'Xbox Series X', 'consola', 'Zaragoza', 499.99, 'Powerful Xbox with immersive gameplay.', TRUE, FALSE, '77777777-7777-7777-7777-777777777777'),
+('b0000000-0000-0000-0000-000000000007', 'Cyberpunk 2077', 'videojuego', 'Madrid', 59.99, 'Futuristic open-world action game.', TRUE, FALSE, '88888888-8888-8888-8888-888888888888'),
+('b0000000-0000-0000-0000-000000000008', 'FIFA 22', 'videojuego', 'Barcelona', 49.99, 'Popular soccer video game with realistic graphics.', TRUE, FALSE, '99999999-9999-9999-9999-999999999999'),
+('b0000000-0000-0000-0000-000000000009', 'Wireless Headphones', 'accesorios', 'Valencia', 199.99, 'Noise-cancelling headphones with superior sound quality.', TRUE, FALSE, 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'),
+('b0000000-0000-0000-0000-000000000010', 'Gaming Mouse', 'accesorios', 'Sevilla', 79.99, 'High precision gaming mouse with customizable buttons.', TRUE, FALSE, '11111111-1111-1111-1111-111111111111');
+
+-- INSERTS PARA LA TABLA fotos (5 filas)
+INSERT INTO fotos (id, foto, articuloId) VALUES
+('c0000000-0000-0000-0000-000000000001', 'iphone13.jpg', 'b0000000-0000-0000-0000-000000000001'),
+('c0000000-0000-0000-0000-000000000002', 'galaxyS22.jpg', 'b0000000-0000-0000-0000-000000000002'),
+('c0000000-0000-0000-0000-000000000003', 'macbookpro16.jpg', 'b0000000-0000-0000-0000-000000000003'),
+('c0000000-0000-0000-0000-000000000004', 'ps5.jpg', 'b0000000-0000-0000-0000-000000000005'),
+('c0000000-0000-0000-0000-000000000005', 'wireless_headphones.jpg', 'b0000000-0000-0000-0000-000000000009');
+
+-- INSERTS PARA LA TABLA solicitudesCompra (3 filas)
+INSERT INTO solicitudesCompra (id, estado, compradorId, articuloId) VALUES
+('d0000000-0000-0000-0000-000000000001', 'pendiente', '44444444-4444-4444-4444-444444444444', 'b0000000-0000-0000-0000-000000000007'),
+('d0000000-0000-0000-0000-000000000002', 'aceptada', '55555555-5555-5555-5555-555555555555', 'b0000000-0000-0000-0000-000000000008'),
+('d0000000-0000-0000-0000-000000000003', 'rechazada', '66666666-6666-6666-6666-666666666666', 'b0000000-0000-0000-0000-000000000010');
+
+-- INSERTS PARA LA TABLA valoraciones (2 filas)
+INSERT INTO valoraciones (id, valoracion, comentario, compradorId, solicitudCompraId) VALUES
+('e0000000-0000-0000-0000-000000000001', 5, 'Excelente producto y servicio.', '44444444-4444-4444-4444-444444444444', 'd0000000-0000-0000-0000-000000000001'),
+('e0000000-0000-0000-0000-000000000002', 4, 'Muy satisfecho con la compra.', '55555555-5555-5555-5555-555555555555', 'd0000000-0000-0000-0000-000000000002');
+
+
+
+
 
 INSERT INTO usuarios (id, username, nombre, apellidos, email, password, telefono, avatar, biografia, activado, rol)
 VALUES
