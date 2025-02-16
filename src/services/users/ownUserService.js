@@ -9,5 +9,7 @@ export const ownUserService = async (id) => {
         throw generateErrorUtils(404, "USER_NOT_FOUND", "El usuario no existe");
     } */
 
+    delete usuario.password;
+
     return usuario;
 };

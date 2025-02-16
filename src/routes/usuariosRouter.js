@@ -7,6 +7,7 @@ import { getUserByIdController } from "../controllers/users/getUserIdController.
 import { authUserMiddleware } from "../middleware/authUserMiddleware.js";
 import { getOwnUserController } from "../controllers/users/getOwnUserController.js";
 import { editUserController } from "../controllers/users/editUserController.js";
+import { editUserPasswordController } from "../controllers/users/editUserPasswordController.js";
 
 export const usuariosRouter = express.Router();
 
@@ -17,3 +18,8 @@ usuariosRouter.post("/usuarios/register", registerUserController); // ruta para 
 usuariosRouter.get("/usuarios/own", authUserMiddleware, getOwnUserController); // ruta para obtener tu propio usuario
 usuariosRouter.get("/usuarios/:id", getUserByIdController); // ruta para obtener un usuario por ID
 usuariosRouter.put("/usuarios/own", authUserMiddleware, editUserController); // ruta para editar la info de tu usuario
+usuariosRouter.put(
+    "/usuarios/password",
+    authUserMiddleware,
+    editUserPasswordController
+);
