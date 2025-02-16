@@ -1,4 +1,4 @@
--- Active: 1733161008938@@127.0.0.1@3306@compraventa
+-- Active: 1733161011832@@127.0.0.1@3306@compraventa
 
 
 INSERT INTO usuarios (id, username, nombre, apellidos, email, password, telefono, avatar, biografia, activado, rol)

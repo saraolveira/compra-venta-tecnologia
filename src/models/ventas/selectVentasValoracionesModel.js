@@ -15,5 +15,5 @@ export const historicoVentasValoraciones = async (idUsuario) => {
 
     const [result] = await pool.query(ventasValoraciones, [idUsuario]);
 
-    return result[0];
+    return result;
 };
