@@ -6,7 +6,7 @@ export const selectAllusersModel = async () => {
 
     // Consulta para obtener todos los usuarios
     const [usuarios] = await pool.query(
-        "SELECT id, username, nombre, apellidos, email, avatar, rol, createdAt, updatedAt FROM usuarios"
+        "SELECT id, username, nombre, apellidos, email, avatar, activado, rol, createdAt, updatedAt FROM usuarios"
     );
 
     // Devolver los usuarios
