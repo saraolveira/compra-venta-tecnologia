@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-import { selectEmailModel } from "../../models/users/selectEmailModel.js";
+import { selectUserByEmailModel } from "../../models/users/selectUserByEmailModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 import { SECRET } from "../../../env.js";
 
@@ -9,7 +9,7 @@ import { SECRET } from "../../../env.js";
 
 export const loginUserService = async (email, password) => {
     // Buscar si el usuario ya existe por email
-    const usuario = await selectEmailModel(email);
+    const usuario = await selectUserByEmailModel(email);
 
     // false por si el usurio o la contraseña no existen o son incorrectas
     let checkPassword = false;
