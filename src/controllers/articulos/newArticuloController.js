@@ -2,16 +2,23 @@ import { newArticuloService } from "../../services/articulos/newArticuloservice.
 
 export const newArticuloController = async (req, res, next) => {
     try {
-        const vendedorId = req.usuario;
-        const { nombre, categoria, localidad, precio, descripcion } = req.body
-        const articulo = await newArticuloService(vendedorId, nombre, categoria, localidad, precio, descripcion)
+        const vendedor = req.usuario;
+        const vendedorId = vendedor.id;
+        const { nombre, categoria, localidad, precio, descripcion } = req.body;
+        const articulo = await newArticuloService(
+            vendedorId,
+            categoria,
+            nombre,
+            localidad,
+            precio,
+            descripcion
+        );
         res.status(201).send({
             status: "ok",
             message: "Articulo creado con éxito",
             data: { articulo },
         });
+    } catch (error) {
+        next(error);
     }
-    catch (error) {
-        next(error)
-    }
-}
+};

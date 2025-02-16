@@ -1,7 +1,7 @@
 export const generateErrorUtils = (status, code, message) => {
-	const error = new Error(message);
-	error.httpStatus = status;
-	error.code = code;
+    const error = new Error(message);
+    error.httpStatus = status;
+    error.code = code;
 
-	return error;
+    return error;
 };
