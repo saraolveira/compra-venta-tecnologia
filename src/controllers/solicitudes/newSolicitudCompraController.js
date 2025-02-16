@@ -6,10 +6,12 @@ export const newSolicitudCompraController = async (req, res, next) => {
         // Obtenemos el usuario comprador
         const compradorId = req.usuario;
         const comprador = await selectUserByIdModel(compradorId.id);
+        delete comprador.password;
         // Obtenemos el artículo
         const articulo = req.articulo;
         // Obtenemos el usuario vendedor
         const vendedor = await selectUserByIdModel(articulo.vendedorId);
+        delete vendedor.password;
 
         const solicitud = await newSolicitudCompraService(
             comprador,
