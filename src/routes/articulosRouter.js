@@ -8,6 +8,7 @@ import { newSolicitudCompraController } from "../controllers/solicitudes/newSoli
 import { newArticuloController } from "../controllers/articulos/newArticuloController.js";
 import { isOwnerMiddleware } from "../middleware/isOwnerMiddleware.js";
 import { editArticuloController } from "../controllers/articulos/editArticuloController.js";
+import { getArticulosByCategoryController } from "../controllers/articulos/getArticulosByCategoryController.js";
 
 export const articulosRouter = express.Router();
 
@@ -27,3 +28,7 @@ articulosRouter.post(
     articleExistsMiddleware,
     newSolicitudCompraController
 ); // ruta para hacer la solicitud de compra de un artículo
+articulosRouter.get(
+    "/articulos/categoria/:category",
+    getArticulosByCategoryController
+); // ruta para obtener los articulos filtrados por categoria
