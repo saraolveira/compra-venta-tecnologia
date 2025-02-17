@@ -10,6 +10,7 @@ import { isOwnerMiddleware } from "../middleware/isOwnerMiddleware.js";
 import { editArticuloController } from "../controllers/articulos/editArticuloController.js";
 import { getArticulosByCategoryController } from "../controllers/articulos/getArticulosByCategoryController.js";
 import { articuloVendidoController } from "../controllers/articulos/ArticuloVendidoController.js";
+import { aceptarRechazarController } from "../controllers/solicitudes/aceptarRechazarController.js";
 
 export const articulosRouter = express.Router();
 
@@ -37,7 +38,10 @@ articulosRouter.get(
 
 // antes de llegar al controllador passar por authUserMiddleware
 
-articulosRoutes.patch(
-    "/articulos/:id_art/solicidudes/:id_sol",
+articulosRouter.patch(
+    "/articulos/:id/solicidudes/:id_sol",
+    authUserMiddleware,
+    articleExistsMiddleware,
+    isOwnerMiddleware,
     aceptarRechazarController
 );

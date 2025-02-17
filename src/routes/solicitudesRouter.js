@@ -10,7 +10,7 @@ solicitudesRouter.get("/solicitudes", getAllSolicitudesController);
 
 solicitudesRouter.get(
     "usuarios/:id/articulos/:id/solicitudes/",
-    getAllSolicitudesController
+    getAllSolicitudesVendedorController
 );
 
 //solicitudesRouter.put("/solicitudes/:id", aceptarRechazarController);
