@@ -11,6 +11,7 @@ import { editArticuloController } from "../controllers/articulos/editArticuloCon
 import { getArticulosByCategoryController } from "../controllers/articulos/getArticulosByCategoryController.js";
 import { articuloVendidoController } from "../controllers/articulos/ArticuloVendidoController.js";
 import { aceptarRechazarController } from "../controllers/solicitudes/aceptarRechazarController.js";
+import { getAllSolicitudesController } from "../controllers/solicitudes/getAllSolicitudesController.js";
 
 export const articulosRouter = express.Router();
 
@@ -30,14 +31,18 @@ articulosRouter.post(
     articleExistsMiddleware,
     newSolicitudCompraController
 ); // ruta para hacer la solicitud de compra de un artículo
-articulosRouter.put("/articulos/:id/vendido", articuloVendidoController); // ruta para marcar un articulo como vendido
+articulosRouter.patch(
+    "/articulos/:id",
+    authUserMiddleware,
+    articleExistsMiddleware,
+    isOwnerMiddleware,
+    articuloVendidoController
+); // ruta para marcar un articulo como vendido
 articulosRouter.get(
     "/articulos/categoria/:category",
     getArticulosByCategoryController
 ); // ruta para obtener los articulos filtrados por categoria
-
-// antes de llegar al controllador passar por authUserMiddleware
-
+articulosRouter.get("/solicitudes", getAllSolicitudesController); // ruta para obtener todas las solicitudes de compra
 articulosRouter.patch(
     "/articulos/:id/solicidudes/:id_sol",
     authUserMiddleware,
@@ -45,3 +50,4 @@ articulosRouter.patch(
     isOwnerMiddleware,
     aceptarRechazarController
 );
+
