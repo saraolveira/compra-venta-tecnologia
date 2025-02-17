@@ -4,13 +4,13 @@ import { getPool } from "../../db/getPool.js";
 export const historicoVentasValoraciones = async (idUsuario) => {
     const pool = await getPool();
 
-    const ventasValoraciones = `SELECT a.id AS articuloId, a.nombre, a.precio, s.estado, v.valoracion, v.comentario
+    const ventasValoraciones = `SELECT a.id AS articuloId, a.nombre, a.precio, v.valoracion, v.comentario
         FROM articulos a
-        LEFT JOIN valoraciones v
-            ON a.id = v.solicitudCompraId
         LEFT JOIN solicitudesCompra s
             ON a.id = s.articuloId
-        WHERE a.vendedorId = ?
+        LEFT JOIN valoraciones v
+            ON s.id = v.solicitudCompraId
+        WHERE a.vendedorId = ? AND a.vendido = 1
         ORDER BY a.createdAt DESC`;
 
     const [result] = await pool.query(ventasValoraciones, [idUsuario]);
