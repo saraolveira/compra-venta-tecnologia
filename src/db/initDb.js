@@ -55,7 +55,7 @@ export const initDb = async () => {
         await pool.query(`
             CREATE TABLE articulos (
                 id CHAR(36) PRIMARY KEY NOT NULL,
-                nombre VARCHAR(50) UNIQUE NOT NULL,
+                nombre VARCHAR(50) NOT NULL,
                 categoria ENUM('telefono', 'ordenador', 'consola', 'videojuego', 'accesorios') DEFAULT 'telefono',
                 localidad VARCHAR(50) NOT NULL,
                 precio DECIMAL(7, 2) NOT NULL,

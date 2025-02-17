@@ -23,10 +23,10 @@ usuariosRouter.get("/usuarios/:id/ventas", getVentasValoracionesController); // 
 usuariosRouter.get(
     "/usuarios/:id/solicitudes-compra",
     getSolicitudesCompraController
-);
+); // ruta para obtener el historico de solicitudes de compra de un usuario
 usuariosRouter.put("/usuarios/own", authUserMiddleware, editUserController); // ruta para editar la info de tu usuario
 usuariosRouter.put(
     "/usuarios/password",
     authUserMiddleware,
     editUserPasswordController
-);
+); // ruta para editar la contraseña de un usuario
