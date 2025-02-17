@@ -1,8 +1,8 @@
 import { articuloVendidoModel } from "../../models/articulos/ArticuloVendidoModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
-export const articuloVendidoService = async (vendido) => {
-    const result = await articuloVendidoModel(vendido);
+export const articuloVendidoService = async (id) => {
+    const result = await articuloVendidoModel(id);
 
     if (result.affectedRows !== 1) {
         throw generateErrorUtils(
@@ -12,5 +12,5 @@ export const articuloVendidoService = async (vendido) => {
         );
     }
 
-    return vendido;
+    return id;
 };
