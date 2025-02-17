@@ -10,6 +10,7 @@ import { isOwnerMiddleware } from "../middleware/isOwnerMiddleware.js";
 import { editArticuloController } from "../controllers/articulos/editArticuloController.js";
 import { getArticulosByCategoryController } from "../controllers/articulos/getArticulosByCategoryController.js";
 import { articuloVendidoController } from "../controllers/articulos/ArticuloVendidoController.js";
+import { aceptarRechazarController } from "../controllers/solicitudes/aceptarRechazarController.js";
 import { getAllSolicitudesController } from "../controllers/solicitudes/getAllSolicitudesController.js";
 
 export const articulosRouter = express.Router();
@@ -42,8 +43,11 @@ articulosRouter.get(
     getArticulosByCategoryController
 ); // ruta para obtener los articulos filtrados por categoria
 articulosRouter.get("/solicitudes", getAllSolicitudesController); // ruta para obtener todas las solicitudes de compra
+articulosRouter.patch(
+    "/articulos/:id/solicidudes/:id_sol",
+    authUserMiddleware,
+    articleExistsMiddleware,
+    isOwnerMiddleware,
+    aceptarRechazarController
+);
 
-// articulosRouter.patch(
-//     "/articulos/:id_art/solicidudes/:id_sol",
-//     aceptarRechazarController
-// );

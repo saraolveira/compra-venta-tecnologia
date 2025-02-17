@@ -1,8 +1,8 @@
 import { aceptarRechazarModel } from "../../models/solicitudes/aceptarRechazarModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
-export const aceptarRechazarService = async (newSolucitud) => {
-    const result = await aceptarRechazarModel(newSolucitud);
+export const aceptarRechazarService = async (solicitud) => {
+    const result = await aceptarRechazarModel(solicitud);
 
     if (result.affectedRows !== 1) {
         throw generateErrorUtils(
