@@ -1,6 +1,6 @@
 import { getPool } from "../../db/getPool.js";
 
-export const ArticuloVendidoModel = async (articulo) => {
+export const articuloVendidoModel = async (articulo) => {
     const pool = await getPool();
 
     const [vendido] = await pool.query(

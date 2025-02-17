@@ -1,8 +1,8 @@
-import { ArticuloVendidoService } from "../../services/articulos/ArticuloVendidoService.js";
+import { articuloVendidoService } from "../../services/articulos/articuloVendidoService.js";
 import { getArticuloByIdService } from "../../services/articulos/getArticuloByIdService.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
-export const ArticuloVendidoController = async (req, res, next) => {
+export const articuloVendidoController = async (req, res, next) => {
     try {
         // verificar que es el vendedor con el id o el token
 
@@ -28,7 +28,7 @@ export const ArticuloVendidoController = async (req, res, next) => {
             );
         }
 
-        const articulo = await ArticuloVendidoService({
+        const articulo = await articuloVendidoService({
             id: oldArticulo.id,
             ...newArticulo,
         });
