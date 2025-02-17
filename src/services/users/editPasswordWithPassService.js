@@ -1,19 +1,22 @@
 import bcrypt from "bcrypt";
-import { selectUserByIdModel } from "../../models/users/selectUserByIdModel.js";
+import { selectUserByEmailModel } from "../../models/users/selectUserByEmailModel.js";
 import { updateUserPasswordModel } from "../../models/users/updateUserPasswordModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
-export const editUserPasswordService = async (id, oldPassword, newPassword) => {
+export const editPasswordWithPassService = async (
+    email,
+    recoveryPass,
+    newPassword
+) => {
     // Buscamos el usuario en la base de datos
-    const usuario = await selectUserByIdModel(id);
+    const usuario = await selectUserByEmailModel(email);
 
-    // Comprobar que la contraseña old coincide
-    const passwordsMatch = await bcrypt.compare(oldPassword, usuario.password);
-    if (!passwordsMatch) {
+    // Comprobamos que el recoveryPass coincide
+    if (!usuario || usuario.recoveryPassCode !== recoveryPass) {
         throw generateErrorUtils(
             400,
-            "WRONG_PASSWORD",
-            "La contraseña proporcionada es incorrecta"
+            "WRONG_DATA",
+            "El email o código de recuperación son incorrectos"
         );
     }
 
@@ -21,7 +24,7 @@ export const editUserPasswordService = async (id, oldPassword, newPassword) => {
     const newPasswordHash = await bcrypt.hash(newPassword, 10);
 
     // Actualizamos la contraseña en la base de datos
-    const result = await updateUserPasswordModel(id, newPasswordHash);
+    const result = await updateUserPasswordModel(usuario.id, newPasswordHash);
 
     if (result.affectedRows !== 1) {
         throw generateErrorUtils(
@@ -32,6 +35,7 @@ export const editUserPasswordService = async (id, oldPassword, newPassword) => {
     }
 
     // Devolvemos el usuario
+    delete usuario.recoveryPassCode;
     delete usuario.password;
     return usuario;
 };

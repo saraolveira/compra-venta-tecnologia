@@ -11,6 +11,7 @@ import { editUserPasswordController } from "../controllers/users/editUserPasswor
 import { getVentasValoracionesController } from "../controllers/ventas/getVentasValoracionesController.js";
 import { getSolicitudesCompraController } from "../controllers/ventas/getSolicitudesCompraController.js";
 import { sendRecoveryPassController } from "../controllers/users/sendRecoveryPassController.js";
+import { editUserPasswordWithPassController } from "../controllers/users/editUserPasswordWithPassController.js";
 
 export const usuariosRouter = express.Router();
 
@@ -32,3 +33,7 @@ usuariosRouter.put(
     editUserPasswordController
 ); // ruta para editar la contraseña de un usuario
 usuariosRouter.post("/usuarios/password/recovery", sendRecoveryPassController); // ruta para enviar correo de recuperacion de contraseña
+usuariosRouter.put(
+    "/usuarios/password/recovery",
+    editUserPasswordWithPassController
+); // ruta para editar contraseña con pass
