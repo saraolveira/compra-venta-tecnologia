@@ -36,7 +36,7 @@ export const editArticuloController = async (req, res, next) => {
         // Actualizamos los datos
         const articulo = await editArticuloService(id, newInfo);
 
-        res.status(201).send({
+        res.status(200).send({
             status: "ok",
             message: "Articulo editado con éxito",
             data: { articulo },
