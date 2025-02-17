@@ -44,10 +44,9 @@ articulosRouter.get(
 ); // ruta para obtener los articulos filtrados por categoria
 articulosRouter.get("/solicitudes", getAllSolicitudesController); // ruta para obtener todas las solicitudes de compra
 articulosRouter.patch(
-    "/articulos/:id/solicidudes/:id_sol",
+    "/articulos/:id/solicitudes/:id_sol",
     authUserMiddleware,
     articleExistsMiddleware,
     isOwnerMiddleware,
     aceptarRechazarController
 );
-

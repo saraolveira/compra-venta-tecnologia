@@ -12,5 +12,5 @@ export const aceptarRechazarService = async (solicitud) => {
         );
     }
 
-    return newSolucitud;
+    return solicitud;
 };
