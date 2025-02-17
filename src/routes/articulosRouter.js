@@ -12,7 +12,6 @@ export const articulosRouter = express.Router();
 articulosRouter.get("/articulos", getAllArticulosController);
 articulosRouter.get("/articulos/:id", getArticuloByIdController);
 articulosRouter.post("/articulos", authUserMiddleware, newArticuloController);
-
 articulosRouter.post(
     "/articulos/:id/comprar",
     authUserMiddleware,

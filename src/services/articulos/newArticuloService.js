@@ -26,5 +26,13 @@ export const newArticuloService = async (
             "No se ha podido crear articulo"
         );
     }
-    return result;
+    return {
+        id,
+        vendedorId,
+        nombre,
+        categoria,
+        localidad,
+        precio,
+        descripcion,
+    };
 };
