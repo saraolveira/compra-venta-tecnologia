@@ -3,8 +3,8 @@ import { getPool } from "../../db/getPool.js";
 export const insertArticuloModel = async (
     id,
     vendedorId,
-    categoria,
     nombre,
+    categoria,
     localidad,
     precio,
     descripcion
@@ -14,8 +14,8 @@ export const insertArticuloModel = async (
 
     // Realizamos la consulta
     const [result] = await pool.query(
-        `INSERT INTO articulos (id, vendedorId, categoria, nombre, localidad, precio, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-        [id, vendedorId, categoria, nombre, localidad, precio, descripcion]
+        `INSERT INTO articulos (id, vendedorId, nombre, categoria, localidad, precio, descripcion) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        [id, vendedorId, nombre, categoria, localidad, precio, descripcion]
     );
 
     // Devolvemos el resultado

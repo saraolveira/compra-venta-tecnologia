@@ -1,4 +1,4 @@
-import { updateActiveUserModel } from "../../controllers/users/updateActiveUserModelregistrarionCode.js";
+import { updateActiveUserModel } from "../../models/users/updateActiveUserModel.js";
 import { selectUserByRegistrationCodeModel } from "../../models/users/selectUserByRegistrationCodeModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
