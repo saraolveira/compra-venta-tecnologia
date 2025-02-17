@@ -4,16 +4,8 @@ import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
 export const aceptarRechazarController = async (req, res, next) => {
     try {
-        // req.user.id tendremos el usuario de la peticiqon (usuario del token)
-        const idVendedor = req.usuario.id;
-        const id_art = req.articulo.id;
         const { id_sol } = req.params;
         const { estado } = req.body;
-
-        console.log(vendedorId);
-        console.log(id_art);
-        console.log(id_sol);
-        console.log(estado);
 
         // devolver un error si no tengo action
 
