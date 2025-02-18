@@ -42,5 +42,5 @@ export const newSolicitudCompraService = async (
     await sendEmailBrevoUtil(email, emailSubject, emailText);
 
     // Devolver la solicitud
-    return result;
+    return { id, compradorId, articuloId };
 };

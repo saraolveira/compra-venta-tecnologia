@@ -42,5 +42,5 @@ export const newValoracionService = async (data) => {
     }
 
     // Devolver la insercción
-    return { result };
+    return { id, valoracion, comentario, compradorId, solicitudCompraId };
 };

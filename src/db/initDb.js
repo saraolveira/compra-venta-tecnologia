@@ -91,7 +91,8 @@ export const initDb = async () => {
                 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updatedAt TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
                 FOREIGN KEY (compradorId) REFERENCES usuarios(id) ON DELETE CASCADE,
-                FOREIGN KEY (articuloId) REFERENCES articulos(id) ON DELETE CASCADE
+                FOREIGN KEY (articuloId) REFERENCES articulos(id) ON DELETE CASCADE,
+                UNIQUE(compradorId, articuloId)
             );
         `);
 

@@ -37,7 +37,7 @@ export const newValoracionController = async (req, res, next) => {
         }
 
         // Guardar la valoración en la base de datos
-        const result = await newValoracionService({
+        const valoracionFinal = await newValoracionService({
             valoracion,
             comentario,
             compradorId,
@@ -48,7 +48,7 @@ export const newValoracionController = async (req, res, next) => {
         res.status(200).json({
             status: "ok",
             message: "Valoración registrada con éxito.",
-            data: result,
+            data: { valoracionFinal },
         });
     } catch (error) {
         next(error);
