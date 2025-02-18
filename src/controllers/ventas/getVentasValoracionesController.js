@@ -2,9 +2,8 @@ import { getVentasValoracionesService } from "../../services/ventas/getVentasVal
 
 export const getVentasValoracionesController = async (req, res, next) => {
     try {
-        const { idUsuario } = req.params;
-        const ventasValoraciones =
-            await getVentasValoracionesService(idUsuario);
+        const { id } = req.params;
+        const ventasValoraciones = await getVentasValoracionesService(id);
         res.status(200).send({
             status: "success",
             message: "Histórico de ventas y valoraciones obtenido con éxito",

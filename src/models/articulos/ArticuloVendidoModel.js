@@ -1,13 +1,12 @@
-/* import { getPool } from "../../db/getPool.js";
+import { getPool } from "../../db/getPool.js";
 
-export const ArticuloVendidoModel = async (id) => {
+export const articuloVendidoModel = async (id) => {
     const pool = await getPool();
 
-    const [vendido] = (vendido = await pool.query(
+    const [vendido] = await pool.query(
         `UPDATE articulos SET vendido = 1 WHERE id = ?`,
-        [articulo.id]
-    ));
+        [id]
+    );
 
     return vendido;
 };
- */

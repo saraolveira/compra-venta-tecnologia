@@ -1,4 +1,5 @@
 import { editUserPasswordService } from "../../services/users/editUserPasswordService.js";
+import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
 export const editUserPasswordController = async (req, res, next) => {
     try {

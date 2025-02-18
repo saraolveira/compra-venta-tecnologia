@@ -8,6 +8,10 @@ import { authUserMiddleware } from "../middleware/authUserMiddleware.js";
 import { getOwnUserController } from "../controllers/users/getOwnUserController.js";
 import { editUserController } from "../controllers/users/editUserController.js";
 import { editUserPasswordController } from "../controllers/users/editUserPasswordController.js";
+import { getVentasValoracionesController } from "../controllers/ventas/getVentasValoracionesController.js";
+import { getSolicitudesCompraController } from "../controllers/ventas/getSolicitudesCompraController.js";
+import { sendRecoveryPassController } from "../controllers/users/sendRecoveryPassController.js";
+import { editUserPasswordWithPassController } from "../controllers/users/editUserPasswordWithPassController.js";
 
 export const usuariosRouter = express.Router();
 
@@ -17,9 +21,19 @@ usuariosRouter.put("/usuarios/active/:registrationCode", activeUserController); 
 usuariosRouter.post("/usuarios/login", loginUserController); // ruta para login
 usuariosRouter.get("/usuarios/own", authUserMiddleware, getOwnUserController); // ruta para obtener tu propio usuario
 usuariosRouter.get("/usuarios/:id", getUserByIdController); // ruta para obtener un usuario por ID
+usuariosRouter.get("/usuarios/:id/ventas", getVentasValoracionesController); // ruta para obtener el historico de ventas y valoraciones de un usuario
+usuariosRouter.get(
+    "/usuarios/:id/solicitudes-compra",
+    getSolicitudesCompraController
+); // ruta para obtener el historico de solicitudes de compra de un usuario
 usuariosRouter.put("/usuarios/own", authUserMiddleware, editUserController); // ruta para editar la info de tu usuario
 usuariosRouter.put(
     "/usuarios/password",
     authUserMiddleware,
     editUserPasswordController
-);
+); // ruta para editar la contraseña de un usuario
+usuariosRouter.post("/usuarios/password/recovery", sendRecoveryPassController); // ruta para enviar correo de recuperacion de contraseña
+usuariosRouter.put(
+    "/usuarios/password/recovery",
+    editUserPasswordWithPassController
+); // ruta para editar contraseña con pass
