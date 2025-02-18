@@ -44,13 +44,14 @@ export const selectArticulosFilteredModel = async (filtros, precio) => {
         });
 
         where !== ""
-            ? (range = `AND precio BETWEEN ${minimo} FROM articulos) AND ${maximo}`)
-            : (range = `precio BETWEEN ${minimo}  AND ${maximo}`);
+            ? (range = `AND precio BETWEEN ${minimo} AND ${maximo}`)
+            : (range = `precio BETWEEN ${minimo} AND ${maximo}`);
     }
 
     // ORDERBY
 
     query = `SELECT * FROM articulos WHERE ${where} ${range};`;
+    console.log(query);
 
     const [articulos] = await pool.query(query, values);
 
