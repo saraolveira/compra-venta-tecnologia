@@ -5,6 +5,7 @@ export const insertValoracionModel = async (valoracion) => {
     const pool = await getPool();
 
     const {
+        id,
         valoracion: puntuacion,
         comentario,
         compradorId,
@@ -12,17 +13,8 @@ export const insertValoracionModel = async (valoracion) => {
     } = valoracion;
 
     const [result] = await pool.query(
-        `INSERT INTO valoraciones (valoracion, comentario, compradorId, solicitudCompraId) 
-        SELECT ?, ?, ?, ?
-        FROM solicitudesCompra
-        WHERE id = ? AND estado = 'aceptada'`,
-        [
-            puntuacion,
-            comentario,
-            compradorId,
-            solicitudCompraId,
-            solicitudCompraId,
-        ]
+        `INSERT INTO valoraciones (id, valoracion, comentario, compradorId, solicitudCompraId) VALUES (?, ?, ?, ?, ?)`,
+        [id, puntuacion, comentario, compradorId, solicitudCompraId]
     );
 
     return { result };

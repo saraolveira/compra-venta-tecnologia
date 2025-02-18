@@ -1,4 +1,4 @@
-import { getValoracionByIdService } from "../../services/valoraciones/getValoraciónByIdService.js";
+import { getValoracionByIdService } from "../../services/valoraciones/getValoracionByIdService.js";
 
 export const getValoracionByIdController = async (req, res, next) => {
     try {

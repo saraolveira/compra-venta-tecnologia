@@ -33,7 +33,6 @@ export const newValoracionService = async (data) => {
         compradorId,
         solicitudCompraId,
     });
-
     if (result.affectedRows === 0) {
         throw generateErrorUtils(
             400,

@@ -9,12 +9,15 @@ import { newArticuloController } from "../controllers/articulos/newArticuloContr
 import { isOwnerMiddleware } from "../middleware/isOwnerMiddleware.js";
 import { editArticuloController } from "../controllers/articulos/editArticuloController.js";
 // import { getArticulosByCategoryController } from "../controllers/articulos/getArticulosByCategoryController.js";
-import { articuloVendidoController } from "../controllers/articulos/ArticuloVendidoController.js";
 import { aceptarRechazarController } from "../controllers/solicitudes/aceptarRechazarController.js";
 import { getAllSolicitudesController } from "../controllers/solicitudes/getAllSolicitudesController.js";
 import { getArticulosFilteredController } from "../controllers/articulos/getArticulosFilteredController.js";
 import { checkAdminRol } from "../middleware/isAdminMiddleware.js";
 import { publishArticleController } from "../controllers/articulos/publishArticuloController.js";
+import { newValoracionController } from "../controllers/valoraciones/newValoracionController.js";
+import { getAllValoracionesController } from "../controllers/valoraciones/getAllValoracionesController.js";
+import { getValoracionByIdController } from "../controllers/valoraciones/getValoracionByIdController.js";
+import { articuloVendidoController } from "../controllers/articulos/ArticuloVendidoController.js";
 
 export const articulosRouter = express.Router();
 
@@ -60,3 +63,11 @@ articulosRouter.patch(
     isOwnerMiddleware,
     aceptarRechazarController
 );
+
+articulosRouter.post(
+    "/articulos/:id/valorar",
+    authUserMiddleware,
+    newValoracionController
+); // ruta para crear una nueva valoración
+articulosRouter.get("/valoraciones", getAllValoracionesController); // ruta para obtener todas las valoraciones
+articulosRouter.get("/valoraciones/:id", getValoracionByIdController); // ruta para obtener valoracion por id
