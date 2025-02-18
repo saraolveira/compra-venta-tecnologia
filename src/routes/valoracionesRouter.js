@@ -6,12 +6,12 @@ import { getValoracionByIdController } from "../controllers/valoraciones/getValo
 
 export const valoracionesRouter = express.Router();
 
-valoracionesRouter.post(
-    "/valoraciones/nueva",
-    authUserMiddleware,
-    newValoracionController
-); // ruta para crear una nueva valoración. cambiar nombre????
-
 valoracionesRouter.get("/valoraciones", getAllValoracionesController); // ruta para obtener todas las valoraciones
 
 valoracionesRouter.get("/valoraciones/:id", getValoracionByIdController); // ruta para obtener valoracion por id
+
+valoracionesRouter.post(
+    "/articulo/:id/valorar",
+    authUserMiddleware,
+    newValoracionController
+); // ruta para crear una nueva valoración. cambiar nombre????

@@ -1,5 +1,5 @@
 import { newArticuloFotosService } from "../../services/articulos/newArticuloFotosService.js";
-import { newArticuloService } from "../../services/articulos/newArticuloservice.js";
+import { newArticuloService } from "../../services/articulos/newArticuloService.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
 export const newArticuloController = async (req, res, next) => {

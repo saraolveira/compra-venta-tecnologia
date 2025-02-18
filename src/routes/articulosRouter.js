@@ -9,12 +9,12 @@ import { newArticuloController } from "../controllers/articulos/newArticuloContr
 import { isOwnerMiddleware } from "../middleware/isOwnerMiddleware.js";
 import { editArticuloController } from "../controllers/articulos/editArticuloController.js";
 // import { getArticulosByCategoryController } from "../controllers/articulos/getArticulosByCategoryController.js";
-import { articuloVendidoController } from "../controllers/articulos/ArticuloVendidoController.js";
 import { aceptarRechazarController } from "../controllers/solicitudes/aceptarRechazarController.js";
 import { getAllSolicitudesController } from "../controllers/solicitudes/getAllSolicitudesController.js";
 import { getArticulosFilteredController } from "../controllers/articulos/getArticulosFilteredController.js";
 import { checkAdminRol } from "../middleware/isAdminMiddleware.js";
 import { publishArticleController } from "../controllers/articulos/publishArticuloController.js";
+import { articuloVendidoController } from "../controllers/articulos/articuloVendidoController.js";
 
 export const articulosRouter = express.Router();
 
