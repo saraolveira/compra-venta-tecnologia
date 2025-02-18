@@ -13,6 +13,8 @@ import { articuloVendidoController } from "../controllers/articulos/ArticuloVend
 import { aceptarRechazarController } from "../controllers/solicitudes/aceptarRechazarController.js";
 import { getAllSolicitudesController } from "../controllers/solicitudes/getAllSolicitudesController.js";
 import { getArticulosFilteredController } from "../controllers/articulos/getArticulosFilteredController.js";
+import { checkAdminRol } from "../middleware/isAdminMiddleware.js";
+import { publishArticleController } from "../controllers/articulos/publishArticuloController.js";
 
 export const articulosRouter = express.Router();
 
@@ -20,6 +22,12 @@ export const articulosRouter = express.Router();
 articulosRouter.get("/articulos", getArticulosFilteredController); // ruta para obtener todos los articulos y aplicarles filtros con querys
 articulosRouter.get("/articulos/:id", getArticuloByIdController);
 articulosRouter.post("/articulos", authUserMiddleware, newArticuloController); // ruta para crar un articulo
+articulosRouter.patch(
+    "/articulos/:id/publicar",
+    authUserMiddleware,
+    checkAdminRol,
+    publishArticleController
+); // ruta para que el admin apruebe un articulo
 articulosRouter.put(
     "/articulos/:id",
     authUserMiddleware,
