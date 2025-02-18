@@ -1,4 +1,4 @@
-import { articuloVendidoModel } from "../../models/articulos/ArticuloVendidoModel.js";
+import { articuloVendidoModel } from "../../models/articulos/articuloVendidoModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
 export const articuloVendidoService = async (id) => {

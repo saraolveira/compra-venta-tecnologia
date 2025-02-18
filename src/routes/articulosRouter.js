@@ -17,7 +17,7 @@ import { publishArticleController } from "../controllers/articulos/publishArticu
 import { newValoracionController } from "../controllers/valoraciones/newValoracionController.js";
 import { getAllValoracionesController } from "../controllers/valoraciones/getAllValoracionesController.js";
 import { getValoracionByIdController } from "../controllers/valoraciones/getValoracionByIdController.js";
-import { articuloVendidoController } from "../controllers/articulos/ArticuloVendidoController.js";
+import { articuloVendidoController } from "../controllers/articulos/articuloVendidoController.js";
 
 export const articulosRouter = express.Router();
 
