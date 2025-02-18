@@ -7,7 +7,7 @@ export const getArticulosFilteredController = async (req, res, next) => {
 
         let articulos = [];
 
-        if (!filtros) {
+        if (Object.keys(filtros)) {
             articulos = await getAllArticulosService();
         } else {
             articulos = await getFilteredArticulosService(filtros);
