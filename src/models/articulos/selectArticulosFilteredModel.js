@@ -1,6 +1,6 @@
 import { getPool } from "../../db/getPool.js";
 
-export const selectArticulosFilteredModel = async (filtros, precio) => {
+export const selectArticulosFilteredModel = async (filtros, precio, order) => {
     const pool = await getPool();
 
     let query = `SELECT categoria, localidad FROM articulos;`;
@@ -12,13 +12,12 @@ export const selectArticulosFilteredModel = async (filtros, precio) => {
 
     if (filtrosKeys.length > 0) {
         let wheres = [];
-        console.log(filtrosKeys);
         filtrosKeys.map((key, id) => {
             values.push(filtros[filtrosKeys[id]]);
             wheres.push(`${filtrosKeys[id]} = ?`);
         });
 
-        where = `${wheres.join(" AND ")}`;
+        where = `WHERE ${wheres.join(" AND ")}`;
     }
 
     // PRECIO
@@ -45,13 +44,17 @@ export const selectArticulosFilteredModel = async (filtros, precio) => {
 
         where !== ""
             ? (range = `AND precio BETWEEN ${minimo} AND ${maximo}`)
-            : (range = `precio BETWEEN ${minimo} AND ${maximo}`);
+            : (range = `WHERE precio BETWEEN ${minimo} AND ${maximo}`);
     }
 
-    // ORDERBY
+    // ORDER BY
+    let sort = "";
+    if (order.by) {
+        sort = `ORDER BY ${order.by} ${order.direction || ""}`;
+    }
 
-    query = `SELECT * FROM articulos WHERE ${where} ${range};`;
-    console.log(query);
+    // QUERY COMPLETA
+    query = `SELECT * FROM articulos ${where} ${range} ${sort};`;
 
     const [articulos] = await pool.query(query, values);
 
