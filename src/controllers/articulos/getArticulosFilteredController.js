@@ -6,22 +6,16 @@ export const getArticulosFilteredController = async (req, res, next) => {
         const filtros = req.query.filtros || {};
         const precio = req.query.precio || {};
         const order = req.query.order || {};
+        const search = req.query.search || {};
 
         let articulos = [];
 
-        if (
-            Object.keys(filtros).length === 0 &&
-            Object.keys(precio).length === 0 &&
-            Object.keys(order).length === 0
-        ) {
-            articulos = await getAllArticulosService();
-        } else {
-            articulos = await getFilteredArticulosService(
-                filtros,
-                precio,
-                order
-            );
-        }
+        articulos = await getFilteredArticulosService(
+            filtros,
+            precio,
+            order,
+            search
+        );
 
         res.status(200).send({
             status: "success",

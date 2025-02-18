@@ -1,6 +1,11 @@
 import { getPool } from "../../db/getPool.js";
 
-export const selectArticulosFilteredModel = async (filtros, precio, order) => {
+export const selectArticulosFilteredModel = async (
+    filtros,
+    precio,
+    order,
+    search
+) => {
     const pool = await getPool();
 
     let query = `SELECT categoria, localidad FROM articulos;`;
@@ -53,8 +58,17 @@ export const selectArticulosFilteredModel = async (filtros, precio, order) => {
         sort = `ORDER BY ${order.by} ${order.direction || ""}`;
     }
 
+    // SEARCH
+    let searchLike = "";
+    console.log(search);
+    if (search.length) {
+        where !== "" || range !== ""
+            ? (searchLike = `AND nombre LIKE '%${search}%'`)
+            : (searchLike = `WHERE nombre LIKE '%${search}%'`);
+    }
+
     // QUERY COMPLETA
-    query = `SELECT * FROM articulos ${where} ${range} ${sort};`;
+    query = `SELECT * FROM articulos ${where} ${range} ${searchLike} ${sort};`;
 
     const [articulos] = await pool.query(query, values);
 
