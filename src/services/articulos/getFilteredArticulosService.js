@@ -2,8 +2,8 @@ import { selectArticulosFilteredModel } from "../../models/articulos/selectArtic
 import { selectPhotosByArticuloIdModel } from "../../models/photos/selectPhotosByArticuloIdModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
-export const getFilteredArticulosService = async (filtros) => {
-    const articulos = await selectArticulosFilteredModel(filtros);
+export const getFilteredArticulosService = async (filtros, precio) => {
+    const articulos = await selectArticulosFilteredModel(filtros, precio);
 
     for (const articulo of articulos) {
         const fotos = await selectPhotosByArticuloIdModel(articulo.id);

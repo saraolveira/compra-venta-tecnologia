@@ -3,14 +3,18 @@ import { getFilteredArticulosService } from "../../services/articulos/getFiltere
 
 export const getArticulosFilteredController = async (req, res, next) => {
     try {
-        const filtros = req.query;
+        const filtros = req.query.filtros || {};
+        const precio = req.query.precio || {};
 
         let articulos = [];
 
-        if (Object.keys(filtros)) {
+        if (
+            Object.keys(filtros).length === 0 &&
+            Object.keys(precio).length === 0
+        ) {
             articulos = await getAllArticulosService();
         } else {
-            articulos = await getFilteredArticulosService(filtros);
+            articulos = await getFilteredArticulosService(filtros, precio);
         }
 
         res.status(200).send({
