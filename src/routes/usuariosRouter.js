@@ -1,7 +1,6 @@
 import express from "express";
 import { registerUserController } from "../controllers/users/registerUserController.js";
 import { getAllUsersController } from "../controllers/users/getAllUsersController.js";
-import { getUserByIdController } from "../controllers/users/getUserIdController.js";
 import { activeUserController } from "../controllers/users/activeUserController.js";
 import { loginUserController } from "../controllers/users/loginUserController.js";
 import { authUserMiddleware } from "../middleware/authUserMiddleware.js";
@@ -12,6 +11,7 @@ import { sendRecoveryPassController } from "../controllers/users/sendRecoveryPas
 import { editUserPasswordWithPassController } from "../controllers/users/editUserPasswordWithPassController.js";
 import { getSolicitudesCompraByUserIdController } from "../controllers/solicitudes/getSolicitudesCompraByUserIdController.js";
 import { getVentasValoracionesByUserIdController } from "../controllers/ventas/getVentasValoracionesByUserIdController.js";
+import { getUserByIdController } from "../controllers/users/getUserByIdController.js";
 
 export const usuariosRouter = express.Router();
 

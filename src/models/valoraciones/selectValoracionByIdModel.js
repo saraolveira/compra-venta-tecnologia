@@ -5,7 +5,7 @@ export const selectValoracionByIdModel = async (valoracionId) => {
     const pool = await getPool();
 
     const [valoracion] = await pool.query(
-        `SELECT * FROM valoraciones WHERE id = ?;`,
+        `SELECT valoracion, comentario FROM valoraciones WHERE id = ?;`,
         [valoracionId]
     );
 

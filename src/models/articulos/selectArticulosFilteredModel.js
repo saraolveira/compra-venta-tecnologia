@@ -8,7 +8,7 @@ export const selectArticulosFilteredModel = async (
 ) => {
     const pool = await getPool();
 
-    let query = `SELECT categoria, localidad FROM articulos;`;
+    let query = `SELECT * FROM articulos;`;
     let values = [];
 
     // FILTROS
@@ -48,8 +48,8 @@ export const selectArticulosFilteredModel = async (
         });
 
         where !== ""
-            ? (range = `AND precio BETWEEN ${minimo} AND ${maximo}`)
-            : (range = `WHERE precio BETWEEN ${minimo} AND ${maximo}`);
+            ? (range = `AND A.precio BETWEEN ${minimo} AND ${maximo}`)
+            : (range = `WHERE A.precio BETWEEN ${minimo} AND ${maximo}`);
     }
 
     // ORDER BY
@@ -62,12 +62,25 @@ export const selectArticulosFilteredModel = async (
     let searchLike = "";
     if (search.length) {
         where !== "" || range !== ""
-            ? (searchLike = `AND nombre LIKE '%${search}%'`)
-            : (searchLike = `WHERE nombre LIKE '%${search}%'`);
+            ? (searchLike = `AND A.nombre LIKE '%${search}%'`)
+            : (searchLike = `WHERE A.nombre LIKE '%${search}%'`);
     }
 
     // QUERY COMPLETA
-    query = `SELECT * FROM articulos ${where} ${range} ${searchLike} ${sort};`;
+    query = `SELECT A.id, A.nombre, A.categoria, A.localidad, A.precio, A.visibilidad, A.vendido, A.createdAt AS fechaCreacion, (SELECT AVG(VV.valoracion) 
+        FROM usuarios UU
+        JOIN articulos AA
+        ON UU.id = AA.vendedorId
+        JOIN solicitudesCompra SS
+        ON AA.id = SS.articuloId
+        JOIN valoraciones VV
+        ON SS.id = VV.solicitudCompraId
+        ) AS valoracionMediaVendedor
+        FROM articulos A
+        JOIN usuarios U
+        ON U.id = A.vendedorId 
+        ${where} ${range} ${searchLike} 
+        ${sort};`;
 
     const [articulos] = await pool.query(query, values);
 
