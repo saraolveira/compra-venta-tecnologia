@@ -1,8 +1,12 @@
-import { aceptarRechazarService } from "../../services/solicitudes/aceptarRechazarService.js";
+import { editAceptarRechazarSolicitudService } from "../../services/solicitudes/editAceptarRechazarSolicitudService.js";
 import { getSolicitudByIdService } from "../../services/solicitudes/getSolicitudByIdService.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
-export const aceptarRechazarController = async (req, res, next) => {
+export const editAceptarRechazarSolicitudController = async (
+    req,
+    res,
+    next
+) => {
     try {
         const { id_sol } = req.params;
         const { estado } = req.body;
@@ -25,13 +29,13 @@ export const aceptarRechazarController = async (req, res, next) => {
             throw generateErrorUtils(
                 404,
                 "SOLICITUD_NOT_FOUND",
-                "No existe la Solicitud"
+                "No existe la solicitud"
             );
         }
 
         // actualizar la solicitud (action)
 
-        const solicitudActualizada = await aceptarRechazarService({
+        const solicitudActualizada = await editAceptarRechazarSolicitudService({
             id: id_sol,
             estado,
         });

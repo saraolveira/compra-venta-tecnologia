@@ -1,6 +1,6 @@
 import { getPool } from "../../db/getPool.js";
 
-export const getAllValoracionesModel = async () => {
+export const selectAllValoracionesModel = async () => {
     // Conectar con la BBDD
     const pool = await getPool();
 

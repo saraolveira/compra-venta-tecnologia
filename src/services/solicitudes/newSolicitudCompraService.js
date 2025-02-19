@@ -2,6 +2,7 @@ import crypto from "crypto";
 import { insertSolicitudModel } from "../../models/solicitudes/insertSolicitudModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 import { sendEmailBrevoUtil } from "../../utils/sendEmailBrevoUtils.js";
+import { FRONTEND_HOST } from "../../../env.js";
 
 export const newSolicitudCompraService = async (
     comprador,
@@ -34,7 +35,7 @@ export const newSolicitudCompraService = async (
         <h2>¡Hola, ${vendedor.username}!</h2>
         <p>${comprador.username} ha hecho una solicitud de compra para tu artículo ${articulo.nombre} por ${articulo.precio}€</p>
         <p>Puedes aceptar o rechazar la solictud aquí:</p>
-        <p><a href="http://localhost:5173/">Acepta/Rechaza la solicitud</a></p>
+        <p><a href=${FRONTEND_HOST}/articulos/${articuloId}>Acepta/Rechaza la solicitud</a></p>
         <p>¡No esperes más!</p>
         <p>El equipo de Tech2Go</p>
         `;

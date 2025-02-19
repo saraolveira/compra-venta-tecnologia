@@ -1,8 +1,8 @@
-import { articuloVendidoModel } from "../../models/articulos/articuloVendidoModel.js";
+import { updateArticuloVendidoModel } from "../../models/articulos/updateArticuloVendidoModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
-export const articuloVendidoService = async (id) => {
-    const result = await articuloVendidoModel(id);
+export const editArticuloVendidoService = async (id) => {
+    const result = await updateArticuloVendidoModel(id);
 
     if (result.affectedRows !== 1) {
         throw generateErrorUtils(

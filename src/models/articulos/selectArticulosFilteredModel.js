@@ -60,7 +60,6 @@ export const selectArticulosFilteredModel = async (
 
     // SEARCH
     let searchLike = "";
-    console.log(search);
     if (search.length) {
         where !== "" || range !== ""
             ? (searchLike = `AND nombre LIKE '%${search}%'`)

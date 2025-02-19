@@ -1,4 +1,3 @@
-import { getAllArticulosService } from "../../services/articulos/getAllArticulosService.js";
 import { getFilteredArticulosService } from "../../services/articulos/getFilteredArticulosService.js";
 
 export const getArticulosFilteredController = async (req, res, next) => {

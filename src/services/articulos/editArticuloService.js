@@ -1,4 +1,3 @@
-import { selectArticuloByIdModel } from "../../models/articulos/selectArticuloByIdModel.js";
 import { updateArticuloModel } from "../../models/articulos/updateArticuloModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 

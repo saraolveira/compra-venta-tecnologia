@@ -6,6 +6,7 @@ import {
     MYSQL_DATABASE,
     MYSQL_PORT,
 } from "../../env.js";
+import { generateErrorUtils } from "../utils/helpersUtils.js";
 
 let pool = null;
 
@@ -40,5 +41,10 @@ export const getPool = async () => {
         return pool;
     } catch (error) {
         console.error("Error al obtener el pool de conexiones");
+        throw generateErrorUtils(
+            400,
+            "POOL_ERROR",
+            "Error al obtener el pool de conexiones"
+        );
     }
 };

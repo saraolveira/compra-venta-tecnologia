@@ -1,7 +1,7 @@
 import { getPool } from "../../db/getPool.js";
 
 // Función para obtener el histórico de solicitudes de compras del comprador
-export const historicoSolicitudesCompra = async (idUsuario) => {
+export const selectSolicitudesCompraByUserIdModel = async (idUsuario) => {
     const pool = await getPool();
 
     const solicitudesCompras = `SELECT a.id AS solicitudId, s.estado, a.nombre AS articulo, a.precio

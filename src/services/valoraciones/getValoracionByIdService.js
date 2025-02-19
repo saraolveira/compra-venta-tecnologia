@@ -1,9 +1,9 @@
-import { getValoracionByIdModel } from "../../models/valoraciones/getValoracionByIdModel.js";
+import { selectValoracionByIdModel } from "../../models/valoraciones/selectValoracionByIdModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
 export const getValoracionByIdService = async (valoracionId) => {
     // Consultar la valoración en la BBDD
-    const valoracion = await getValoracionByIdModel(valoracionId);
+    const valoracion = await selectValoracionByIdModel(valoracionId);
 
     if (!valoracion) {
         throw generateErrorUtils(

@@ -1,10 +1,10 @@
-import { articuloVendidoService } from "../../services/articulos/articuloVendidoService.js";
+import { editArticuloVendidoService } from "../../services/articulos/editArticuloVendidoService.js";
 
-export const articuloVendidoController = async (req, res, next) => {
+export const editArticuloVendidoController = async (req, res, next) => {
     try {
         const { id } = req.articulo;
 
-        const articulo = await articuloVendidoService(id);
+        const articulo = await editArticuloVendidoService(id);
 
         res.status(200).send({
             status: "success",

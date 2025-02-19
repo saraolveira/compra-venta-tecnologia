@@ -1,7 +1,7 @@
 import { getPool } from "../../db/getPool.js";
 
 // Función para obtener el histórico de ventas y valoraciones del vendedor
-export const historicoVentasValoraciones = async (idUsuario) => {
+export const selectVentasValoracionesByUserIdModel = async (idUsuario) => {
     const pool = await getPool();
 
     const ventasValoraciones = `SELECT a.id AS articuloId, a.nombre, a.precio, v.valoracion, v.comentario

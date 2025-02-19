@@ -140,7 +140,7 @@ export const initDb = async () => {
         await createPathUtil(avatarsDir);
         const articulosDir = path.join(uploadsDir, "articulos");
         await createPathUtil(articulosDir);
-        console.log("Directorios de subida creados ");
+        console.log("Directorios de subida creados");
 
         console.log("Todo ha ido bien");
 

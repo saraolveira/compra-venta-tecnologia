@@ -4,7 +4,6 @@ import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
 export const getArticulosByCategoryService = async (category) => {
     const articulos = await selectArticulosByCategoryModel(category);
-    console.log(articulos);
 
     for (const articulo of articulos) {
         const fotos = await selectPhotosByArticuloIdModel(articulo.id);

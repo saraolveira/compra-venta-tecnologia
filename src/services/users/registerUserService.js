@@ -8,6 +8,7 @@ import { selectUserByEmailModel } from "../../models/users/selectUserByEmailMode
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 import { insertUserModel } from "../../models/users/insertUsernameModel.js";
 import { sendEmailBrevoUtil } from "../../utils/sendEmailBrevoUtils.js";
+import { FRONTEND_HOST } from "../../../env.js";
 
 // función que se encarga de registrar un usuario en la base de datos
 export const registerUserService = async (username, email, password) => {
@@ -68,7 +69,7 @@ export const registerUserService = async (username, email, password) => {
     <h2>¡Bienvenid@ a Tech2Go, ${username}!</h2>
     <p>Ya casi eres parte de nuestra comunidad, la plataforma donde la tecnología y la innovación se encuentran.</p>
     <p>Para empezar a vender o comprar los mejores productos tecnológicos, activa tu cuenta haciendo clic en el siguiente enlace:</p>
-    <p><a href="http://localhost:5173/usuarios/active/${registrationCode}">Activa tu cuenta</a></p>
+    <p><a href="${FRONTEND_HOST}/usuarios/active/${registrationCode}">Activa tu cuenta</a></p>
     <p>¡No esperes más!</p>
     <p>El equipo de Tech2Go</p>
     `;
@@ -76,5 +77,5 @@ export const registerUserService = async (username, email, password) => {
     await sendEmailBrevoUtil(email, emailSubject, emailText);
 
     // Devolver el usuario creado
-    return { id, username, email, registrationCode };
+    return { id, username, email };
 };

@@ -1,8 +1,8 @@
-import { publishArticuloModel } from "../../models/articulos/publishArticuloModel.js";
+import { updatePublishArticuloModel } from "../../models/articulos/updatePublishArticuloModel.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
 export const publishArticleService = async (articuloId) => {
-    const result = await publishArticuloModel(articuloId);
+    const result = await updatePublishArticuloModel(articuloId);
 
     if (result.affectedRows !== 1) {
         throw generateErrorUtils(
