@@ -77,5 +77,5 @@ export const registerUserService = async (username, email, password) => {
     await sendEmailBrevoUtil(email, emailSubject, emailText);
 
     // Devolver el usuario creado
-    return { id, username, email };
+    return { id, username, email, registrationCode };
 };
