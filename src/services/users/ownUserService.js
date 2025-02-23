@@ -10,6 +10,5 @@ export const ownUserService = async (id) => {
     } */
 
     delete usuario.password;
-
     return usuario;
 };

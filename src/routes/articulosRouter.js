@@ -16,6 +16,7 @@ import { newValoracionController } from "../controllers/valoraciones/newValoraci
 import { getAllValoracionesController } from "../controllers/valoraciones/getAllValoracionesController.js";
 import { getValoracionByIdController } from "../controllers/valoraciones/getValoracionByIdController.js";
 import { editArticuloVendidoController } from "../controllers/articulos/editArticuloVendidoController.js";
+import { getSolicitudesCompraByArticuloIdController } from "../controllers/solicitudes/getSolicitudesCompraByArticuloIdController.js";
 
 export const articulosRouter = express.Router();
 
@@ -49,6 +50,11 @@ articulosRouter.patch(
     editArticuloVendidoController
 ); // ruta para marcar un articulo como vendido
 articulosRouter.get("/solicitudes", getAllSolicitudesController); // ruta para obtener todas las solicitudes de compra
+articulosRouter.get(
+    "/articulos/:id/solicitudes",
+    articleExistsMiddleware,
+    getSolicitudesCompraByArticuloIdController
+); //  ruta para obtener las solicitudes de compra de un articulo
 articulosRouter.patch(
     "/articulos/:id/solicitudes/:id_sol",
     authUserMiddleware,

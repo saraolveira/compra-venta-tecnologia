@@ -11,7 +11,7 @@ export const getSolicitudesCompraByUserIdController = async (
         res.status(200).send({
             status: "success",
             message: "Histórico de solicitudes de compra obtenido con éxito",
-            data: solicitudesCompra,
+            data: { solicitudesCompra },
         });
     } catch (error) {
         next(error);

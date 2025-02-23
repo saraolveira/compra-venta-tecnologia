@@ -13,5 +13,6 @@ export const getUserByIdService = async (id) => {
         );
     }
 
+    delete usuario.password;
     return usuario;
 };

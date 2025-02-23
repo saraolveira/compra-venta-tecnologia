@@ -12,6 +12,9 @@ import { editUserPasswordWithPassController } from "../controllers/users/editUse
 import { getSolicitudesCompraByUserIdController } from "../controllers/solicitudes/getSolicitudesCompraByUserIdController.js";
 import { getVentasValoracionesByUserIdController } from "../controllers/ventas/getVentasValoracionesByUserIdController.js";
 import { getUserByIdController } from "../controllers/users/getUserByIdController.js";
+import { editAvatarUserController } from "../controllers/users/editAvatarUserController.js";
+import { removeAvatarUserController } from "../controllers/users/removeAvatarUserController.js";
+import { getArticulosByUserIdController } from "../controllers/articulos/getArticulosByUserIdController.js";
 
 export const usuariosRouter = express.Router();
 
@@ -21,6 +24,7 @@ usuariosRouter.put("/usuarios/active/:registrationCode", activeUserController); 
 usuariosRouter.post("/usuarios/login", loginUserController); // ruta para login
 usuariosRouter.get("/usuarios/own", authUserMiddleware, getOwnUserController); // ruta para obtener tu propio usuario
 usuariosRouter.get("/usuarios/:id", getUserByIdController); // ruta para obtener un usuario por ID
+usuariosRouter.get("/usuarios/:id/articulos", getArticulosByUserIdController); // ruta para obtener los articulos que un usuario tiene / ha tenido en venta
 usuariosRouter.get(
     "/usuarios/:id/ventas",
     getVentasValoracionesByUserIdController
@@ -30,6 +34,16 @@ usuariosRouter.get(
     getSolicitudesCompraByUserIdController
 ); // ruta para obtener el historico de solicitudes de compra de un usuario
 usuariosRouter.put("/usuarios/own", authUserMiddleware, editUserController); // ruta para editar la info de tu usuario
+usuariosRouter.patch(
+    "/usuarios/avatar",
+    authUserMiddleware,
+    editAvatarUserController
+); // ruta para actualizar el avatar de tu usuario
+usuariosRouter.delete(
+    "/usuarios/avatar",
+    authUserMiddleware,
+    removeAvatarUserController
+); // ruta para borrar el avatar de tu usuario
 usuariosRouter.put(
     "/usuarios/password",
     authUserMiddleware,

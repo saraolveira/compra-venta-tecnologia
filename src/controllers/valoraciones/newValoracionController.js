@@ -1,5 +1,4 @@
 import { selectSolicitudByArticuloIdCompradorIdModel } from "../../models/solicitudes/selectSolicitudByArticuloIdCompradorIdModel.js";
-import { getSolicitudByIdService } from "../../services/solicitudes/getSolicitudByIdService.js";
 import { newValoracionService } from "../../services/valoraciones/newValoracionService.js";
 import { generateErrorUtils } from "../../utils/helpersUtils.js";
 
@@ -11,12 +10,12 @@ export const newValoracionController = async (req, res, next) => {
         const compradorId = req.usuario.id;
 
         // Comprobamos que la solicitud de compra del articulo está aceptada
-        const solicitudId = await selectSolicitudByArticuloIdCompradorIdModel(
+        const solicitud = await selectSolicitudByArticuloIdCompradorIdModel(
             articuloId,
             compradorId
         );
 
-        if (!solicitudId) {
+        if (!solicitud) {
             throw generateErrorUtils(
                 404,
                 "SOLICITUD_NOT_FOUND",
@@ -24,8 +23,7 @@ export const newValoracionController = async (req, res, next) => {
             );
         }
 
-        const solicitudCompraId = solicitudId.id;
-        const solicitud = await getSolicitudByIdService(solicitudCompraId);
+        const solicitudCompraId = solicitud.id;
         const estado = solicitud.estado;
 
         if (estado !== "aceptada") {

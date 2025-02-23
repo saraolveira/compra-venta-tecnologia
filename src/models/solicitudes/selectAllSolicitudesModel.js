@@ -4,7 +4,7 @@ export const selectAllSolicitudesModel = async () => {
     const pool = await getPool();
 
     const [solicitudesCompra] = await pool.query(
-        `SELECT * FROM solicitudesCompra LIMIT 10`
+        `SELECT id, estado, compradorId, vendedorId FROM solicitudesCompra`
     );
 
     return solicitudesCompra;

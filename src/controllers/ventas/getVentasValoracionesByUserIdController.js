@@ -12,7 +12,7 @@ export const getVentasValoracionesByUserIdController = async (
         res.status(200).send({
             status: "success",
             message: "Histórico de ventas y valoraciones obtenido con éxito",
-            data: ventasValoraciones,
+            data: { ventasValoraciones },
         });
     } catch (error) {
         next(error);

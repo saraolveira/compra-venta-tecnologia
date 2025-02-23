@@ -4,7 +4,7 @@ export const selectSolicitudByIdModel = async (id) => {
     const pool = await getPool();
 
     const [solicitud] = await pool.query(
-        `SELECT * FROM solicitudesCompra WHERE id = ?`,
+        `SELECT id, estado FROM solicitudesCompra WHERE id = ?`,
         [id]
     );
 
