@@ -6,12 +6,14 @@ export const getFilteredArticulosService = async (
     filtros,
     precio,
     order,
+    limit,
     search
 ) => {
     const articulos = await selectArticulosFilteredModel(
         filtros,
         precio,
         order,
+        limit,
         search
     );
 

@@ -4,6 +4,7 @@ export const selectArticulosFilteredModel = async (
     filtros,
     precio,
     order,
+    limit,
     search
 ) => {
     const pool = await getPool();
@@ -58,6 +59,12 @@ export const selectArticulosFilteredModel = async (
         sort = `ORDER BY ${order.by} ${order.direction || ""}`;
     }
 
+    // LIMIT
+    let limite = "";
+    if (limit.length) {
+        limite = `LIMIT ${limit}`;
+    }
+
     // SEARCH
     let searchLike = "";
     if (search.length) {
@@ -79,8 +86,8 @@ export const selectArticulosFilteredModel = async (
         FROM articulos A
         JOIN usuarios U
         ON U.id = A.vendedorId 
-        ${where} ${range} ${searchLike} 
-        ${sort};`;
+        ${where} ${range} ${searchLike}  
+        ${sort} ${limite};`;
 
     const [articulos] = await pool.query(query, values);
 
