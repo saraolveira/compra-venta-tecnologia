@@ -74,7 +74,7 @@ export const selectArticulosFilteredModel = async (
     }
 
     // QUERY COMPLETA
-    query = `SELECT A.id, A.nombre, A.categoria, A.localidad, A.precio, A.visibilidad, A.vendido, A.createdAt AS fechaCreacion, (SELECT AVG(VV.valoracion) 
+    query = `SELECT A.id, A.nombre, A.categoria, A.localidad, A.precio, A.visibilidad, A.vendido, A.vendedorId, A.createdAt AS fechaCreacion, (SELECT AVG(VV.valoracion) 
         FROM usuarios UU
         JOIN articulos AA
         ON UU.id = AA.vendedorId
