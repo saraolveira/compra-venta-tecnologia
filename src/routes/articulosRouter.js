@@ -17,10 +17,12 @@ import { getAllValoracionesController } from "../controllers/valoraciones/getAll
 import { getValoracionByIdController } from "../controllers/valoraciones/getValoracionByIdController.js";
 import { editArticuloVendidoController } from "../controllers/articulos/editArticuloVendidoController.js";
 import { getSolicitudesCompraByArticuloIdController } from "../controllers/solicitudes/getSolicitudesCompraByArticuloIdController.js";
+import { getCategoriasController } from "../controllers/articulos/getCategoriasController.js";
 
 export const articulosRouter = express.Router();
 
 articulosRouter.get("/articulos", getArticulosFilteredController); // ruta para obtener todos los articulos y aplicarles filtros con querys
+articulosRouter.get("/articulos/categorias", getCategoriasController);
 articulosRouter.get("/articulos/:id", getArticuloByIdController);
 articulosRouter.post("/articulos", authUserMiddleware, newArticuloController); // ruta para crar un articulo
 articulosRouter.patch(
