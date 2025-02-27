@@ -5,7 +5,7 @@ export const selectUserByIdModel = async (id) => {
     const pool = await getPool();
 
     const [usuarios] = await pool.query(
-        `SELECT U.id, U.username, U.nombre, U.apellidos, U.email, U.password, U.avatar, U.rol, U.activado, U.createdAt AS fechaRegistro,
+        `SELECT U.id, U.username, U.nombre, U.apellidos, U.email, U.password, U.avatar, U.biografia, U.rol, U.activado, U.createdAt AS fechaRegistro,
         (SELECT AVG(VV.valoracion) 
         FROM usuarios UU
         JOIN articulos AA
