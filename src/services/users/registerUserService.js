@@ -11,7 +11,13 @@ import { sendEmailBrevoUtil } from "../../utils/sendEmailBrevoUtils.js";
 import { FRONTEND_HOST } from "../../../env.js";
 
 // función que se encarga de registrar un usuario en la base de datos
-export const registerUserService = async (username, email, password) => {
+export const registerUserService = async (
+    username,
+    nombre,
+    apellidos,
+    email,
+    password
+) => {
     // buscar si el usuario o email ya existe
     const checkUser = async (username, email) => {
         if (await selectUserByUsernameModel(username)) {
@@ -46,6 +52,8 @@ export const registerUserService = async (username, email, password) => {
     const newUser = {
         id,
         username,
+        nombre,
+        apellidos,
         email,
         password: hashedPassword,
         registrationCode,
@@ -66,7 +74,7 @@ export const registerUserService = async (username, email, password) => {
     const emailSubject = "Activación de cuenta";
     // Cuerpo del email
     const emailText = `
-    <h2>¡Bienvenid@ a Tech2Go, ${username}!</h2>
+    <h2>¡Bienvenid@ a Tech2Go, ${nombre}!</h2>
     <p>Ya casi eres parte de nuestra comunidad, la plataforma donde la tecnología y la innovación se encuentran.</p>
     <p>Para empezar a vender o comprar los mejores productos tecnológicos, activa tu cuenta haciendo clic en el siguiente enlace:</p>
     <p><a href="${FRONTEND_HOST}/validar/${registrationCode}">Activa tu cuenta</a></p>
@@ -77,5 +85,5 @@ export const registerUserService = async (username, email, password) => {
     await sendEmailBrevoUtil(email, emailSubject, emailText);
 
     // Devolver el usuario creado
-    return { id, username, email, registrationCode };
+    return { id, username, nombre, apellidos, email, registrationCode };
 };
