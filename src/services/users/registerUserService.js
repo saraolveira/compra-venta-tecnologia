@@ -69,7 +69,7 @@ export const registerUserService = async (username, email, password) => {
     <h2>¡Bienvenid@ a Tech2Go, ${username}!</h2>
     <p>Ya casi eres parte de nuestra comunidad, la plataforma donde la tecnología y la innovación se encuentran.</p>
     <p>Para empezar a vender o comprar los mejores productos tecnológicos, activa tu cuenta haciendo clic en el siguiente enlace:</p>
-    <p><a href="${FRONTEND_HOST}/usuarios/active/${registrationCode}">Activa tu cuenta</a></p>
+    <p><a href="${FRONTEND_HOST}/validar/${registrationCode}">Activa tu cuenta</a></p>
     <p>¡No esperes más!</p>
     <p>El equipo de Tech2Go</p>
     `;
