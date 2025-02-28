@@ -4,7 +4,7 @@ import { getPool } from "../../db/getPool.js";
 export const selectSolicitudesCompraByUserIdModel = async (idUsuario) => {
     const pool = await getPool();
 
-    const solicitudesCompras = `SELECT a.id AS solicitudId, s.estado, a.nombre AS articulo, a.precio
+    const solicitudesCompras = `SELECT a.id AS solicitudId, s.estado, a.nombre AS articulo, a.precio, s.createdAt AS fecha
         FROM solicitudesCompra s
         INNER JOIN articulos a
             ON s.articuloId = a.id
