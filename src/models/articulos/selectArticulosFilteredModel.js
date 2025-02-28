@@ -23,7 +23,7 @@ export const selectArticulosFilteredModel = async (
             wheres.push(`${filtrosKeys[id]} = ?`);
         });
 
-        where = `WHERE ${wheres.join(" AND ")}`;
+        where = `AND ${wheres.join(" AND ")}`;
     }
 
     // PRECIO
@@ -48,9 +48,7 @@ export const selectArticulosFilteredModel = async (
             minMax.push(precio[precioKeys[id]]);
         });
 
-        where !== ""
-            ? (range = `AND A.precio BETWEEN ${minimo} AND ${maximo}`)
-            : (range = `WHERE A.precio BETWEEN ${minimo} AND ${maximo}`);
+        range = `AND A.precio BETWEEN ${minimo} AND ${maximo}`;
     }
 
     // ORDER BY
@@ -68,9 +66,7 @@ export const selectArticulosFilteredModel = async (
     // SEARCH
     let searchLike = "";
     if (search.length) {
-        where !== "" || range !== ""
-            ? (searchLike = `AND A.nombre LIKE '%${search}%'`)
-            : (searchLike = `WHERE A.nombre LIKE '%${search}%'`);
+        searchLike = `AND A.nombre LIKE '%${search}%'`;
     }
 
     // QUERY COMPLETA
@@ -86,6 +82,7 @@ export const selectArticulosFilteredModel = async (
         FROM articulos A
         JOIN usuarios U
         ON U.id = A.vendedorId 
+        WHERE visibilidad = TRUE 
         ${where} ${range} ${searchLike}  
         ${sort} ${limite};`;
 

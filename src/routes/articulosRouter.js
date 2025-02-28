@@ -18,6 +18,7 @@ import { getValoracionByIdController } from "../controllers/valoraciones/getValo
 import { editArticuloVendidoController } from "../controllers/articulos/editArticuloVendidoController.js";
 import { getSolicitudesCompraByArticuloIdController } from "../controllers/solicitudes/getSolicitudesCompraByArticuloIdController.js";
 import { getCategoriasController } from "../controllers/articulos/getCategoriasController.js";
+import { getArticulosPendingController } from "../controllers/articulos/getArticulosPendingController.js";
 
 export const articulosRouter = express.Router();
 
@@ -25,6 +26,12 @@ articulosRouter.get("/articulos", getArticulosFilteredController); // ruta para 
 articulosRouter.get("/articulos/categorias", getCategoriasController);
 articulosRouter.get("/articulos/:id", getArticuloByIdController);
 articulosRouter.post("/articulos", authUserMiddleware, newArticuloController); // ruta para crar un articulo
+articulosRouter.get(
+    "/articulos-pendientes",
+    authUserMiddleware,
+    checkAdminRol,
+    getArticulosPendingController
+);
 articulosRouter.patch(
     "/articulos/:id/publicar",
     authUserMiddleware,
