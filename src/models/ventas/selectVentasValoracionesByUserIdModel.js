@@ -4,7 +4,7 @@ import { getPool } from "../../db/getPool.js";
 export const selectVentasValoracionesByUserIdModel = async (idUsuario) => {
     const pool = await getPool();
 
-    const ventasValoraciones = `SELECT a.id AS articuloId, a.nombre, a.precio, v.valoracion, v.comentario, a.updatedAt AS fecha
+    const ventasValoraciones = `SELECT a.id AS articuloId, a.nombre, a.vendedorId, a.precio, v.valoracion, v.comentario, a.updatedAt AS fecha
         FROM articulos a
         LEFT JOIN solicitudesCompra s
             ON a.id = s.articuloId
