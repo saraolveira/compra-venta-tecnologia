@@ -8,7 +8,7 @@ export const getCategoriasService = async () => {
         // si users.length es 0
         throw generateErrorUtils(
             404,
-            "NO_USERS_FOUND",
+            "NO_CATEGORIES_FOUND",
             "No se han encontrado categorias"
         );
     }

@@ -19,11 +19,15 @@ import { editArticuloVendidoController } from "../controllers/articulos/editArti
 import { getSolicitudesCompraByArticuloIdController } from "../controllers/solicitudes/getSolicitudesCompraByArticuloIdController.js";
 import { getCategoriasController } from "../controllers/articulos/getCategoriasController.js";
 import { getArticulosPendingController } from "../controllers/articulos/getArticulosPendingController.js";
+import { getLocalidadesController } from "../controllers/articulos/getLocalidadesController.js";
+import { getPriceRangeController } from "../controllers/articulos/getPrinceRangeController.js";
 
 export const articulosRouter = express.Router();
 
 articulosRouter.get("/articulos", getArticulosFilteredController); // ruta para obtener todos los articulos y aplicarles filtros con querys
 articulosRouter.get("/articulos/categorias", getCategoriasController);
+articulosRouter.get("/articulos/localidades", getLocalidadesController);
+articulosRouter.get("/articulos/precios", getPriceRangeController);
 articulosRouter.get("/articulos/:id", getArticuloByIdController);
 articulosRouter.post("/articulos", authUserMiddleware, newArticuloController); // ruta para crar un articulo
 articulosRouter.get(
