@@ -10,7 +10,7 @@ export const selectVentasValoracionesByUserIdModel = async (idUsuario) => {
             ON a.id = s.articuloId
         LEFT JOIN valoraciones v
             ON s.id = v.solicitudCompraId
-        WHERE a.vendedorId = ? AND a.vendido = 1
+        WHERE a.vendedorId = ? AND a.vendido = 1 AND s.estado = "aceptada"
         ORDER BY a.createdAt DESC`;
 
     const [result] = await pool.query(ventasValoraciones, [idUsuario]);
