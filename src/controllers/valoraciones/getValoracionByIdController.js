@@ -8,7 +8,7 @@ export const getValoracionByIdController = async (req, res, next) => {
 
         res.status(200).json({
             status: "ok",
-            data: valoracion,
+            data: { valoracion },
         });
     } catch (error) {
         next(error);
