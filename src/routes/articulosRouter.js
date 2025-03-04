@@ -21,6 +21,8 @@ import { getCategoriasController } from "../controllers/articulos/getCategoriasC
 import { getArticulosPendingController } from "../controllers/articulos/getArticulosPendingController.js";
 import { getLocalidadesController } from "../controllers/articulos/getLocalidadesController.js";
 import { getPriceRangeController } from "../controllers/articulos/getPrinceRangeController.js";
+import { getSolicitudByIdController } from "../controllers/solicitudes/getSolicitudByIdController.js";
+import { getSolicitudesByVendedorIdController } from "../controllers/solicitudes/getSolicitudesByVendedorIdController.js";
 
 export const articulosRouter = express.Router();
 
@@ -64,10 +66,22 @@ articulosRouter.patch(
 ); // ruta para marcar un articulo como vendido
 articulosRouter.get("/solicitudes", getAllSolicitudesController); // ruta para obtener todas las solicitudes de compra
 articulosRouter.get(
+    "/usuarios/solicitudes/",
+    authUserMiddleware,
+    getSolicitudesByVendedorIdController
+); // ruta para obtener las solicitudes de compra que tiene un vendedor a sus artículos
+articulosRouter.get(
     "/articulos/:id/solicitudes",
     articleExistsMiddleware,
     getSolicitudesCompraByArticuloIdController
 ); //  ruta para obtener las solicitudes de compra de un articulo
+articulosRouter.get(
+    "/articulos/:id/solicitudes/:id_sol",
+    authUserMiddleware,
+    articleExistsMiddleware,
+    // isOwnerMiddleware,
+    getSolicitudByIdController
+); // ruta para obtener la solicitud de compra por id
 articulosRouter.patch(
     "/articulos/:id/solicitudes/:id_sol",
     authUserMiddleware,
