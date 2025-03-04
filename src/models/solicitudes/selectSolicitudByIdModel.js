@@ -4,7 +4,7 @@ export const selectSolicitudByIdModel = async (id) => {
     const pool = await getPool();
 
     const [solicitud] = await pool.query(
-        `SELECT S.id, S.estado, U.username 
+        `SELECT S.id, S.estado, S.compradorId, U.username 
         FROM solicitudesCompra S
         JOIN usuarios U
         ON U.id = S.compradorId

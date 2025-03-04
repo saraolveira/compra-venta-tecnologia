@@ -10,7 +10,6 @@ export const editAceptarRechazarSolicitudController = async (
     try {
         const { id_sol } = req.params;
         const { estado } = req.body;
-        console.log(req.body);
 
         // devolver un error si no tengo action
 
