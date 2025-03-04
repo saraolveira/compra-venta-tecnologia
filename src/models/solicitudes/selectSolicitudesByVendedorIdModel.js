@@ -10,7 +10,7 @@ export const selectSolicitudesByVendedorIdModel = async (id) => {
             ON A.id = S.articuloId
             JOIN usuarios U
             ON U.id = S.compradorId
-            WHERE A.vendedorId = ?`,
+            WHERE A.vendedorId = ? AND S.estado = "pendiente"`,
         [id]
     );
 
