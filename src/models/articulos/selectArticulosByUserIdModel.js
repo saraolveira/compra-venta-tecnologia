@@ -14,6 +14,7 @@ export const selectArticulosByUserIdModel = async (userId) => {
         ON AA.id = SS.articuloId
         JOIN valoraciones VV
         ON SS.id = VV.solicitudCompraId
+        WHERE U.id = UU.id
         ) AS valoracionMediaVendedor
         FROM articulos A
         JOIN usuarios U
